@@ -6,12 +6,15 @@ export default function Footer() {
       <div className="max-w-7xl mx-auto">
         <div className="flex flex-col md:flex-row items-center justify-between gap-6">
           <div className="flex items-center gap-3">
-            <div className="w-8 h-8 rounded-md bg-gradient-to-br from-gold to-gold-dark flex items-center justify-center">
-              <span className="text-black font-bold text-xs font-display">APJ</span>
+            <img src="/bull-logo.svg" alt="APJ Kapital" className="h-8 w-auto" />
+            <div className="flex flex-col leading-tight">
+              <span className="text-white font-display font-semibold text-sm tracking-widest">
+                APJ
+              </span>
+              <span className="text-gold/50 font-display text-[8px] tracking-[0.3em] uppercase">
+                Kapital
+              </span>
             </div>
-            <span className="text-zinc-500 font-display text-sm tracking-wider">
-              KAPITAL
-            </span>
           </div>
 
           <div className="flex items-center gap-8">
@@ -39,8 +42,9 @@ export default function Footer() {
         />
 
         <p className="text-center text-[10px] text-zinc-800 mt-6 max-w-2xl mx-auto leading-relaxed">
-          Past performance is not indicative of future results. All investments involve risk.
+          Past performance is not indicative of future results. All investments involve risk, including possible loss of principal.
           The information on this site does not constitute investment advice or a solicitation to invest.
+          APJ Kapital is not responsible for any investment decisions made on the basis of information provided herein.
         </p>
       </div>
     </footer>

@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion'
 import { useInView } from './hooks'
-import { Mail, MapPin, ArrowUpRight } from 'lucide-react'
+import { Mail, Phone, MapPin, ArrowUpRight } from 'lucide-react'
 import { useState } from 'react'
 
 export default function Contact() {
@@ -29,18 +29,19 @@ export default function Contact() {
             <h2 className="text-4xl md:text-5xl font-display font-bold mt-4 mb-8">
               Let&apos;s{' '}
               <span className="bg-gradient-to-r from-gold-light to-gold bg-clip-text text-transparent">
-                Connect
+                Talk
               </span>
             </h2>
 
             <p className="text-zinc-400 text-lg leading-relaxed mb-12">
-              Interested in learning more about our strategies or exploring a
-              partnership? We&apos;d love to hear from you.
+              Whether you&apos;re exploring investment opportunities, seeking advisory
+              services, or interested in our quantitative strategies — we&apos;d love
+              to hear from you.
             </p>
 
             <div className="space-y-6">
               <div className="flex items-center gap-4">
-                <div className="w-12 h-12 rounded-xl bg-gold/10 flex items-center justify-center">
+                <div className="w-12 h-12 rounded-xl bg-gold/10 flex items-center justify-center shrink-0">
                   <Mail size={20} className="text-gold" />
                 </div>
                 <div>
@@ -52,12 +53,32 @@ export default function Contact() {
               </div>
 
               <div className="flex items-center gap-4">
-                <div className="w-12 h-12 rounded-xl bg-gold/10 flex items-center justify-center">
+                <div className="w-12 h-12 rounded-xl bg-gold/10 flex items-center justify-center shrink-0">
+                  <Phone size={20} className="text-gold" />
+                </div>
+                <div>
+                  <div className="text-sm text-zinc-500">Guido Williams</div>
+                  <span className="text-white">+39 02 XXX XXXX</span>
+                </div>
+              </div>
+
+              <div className="flex items-center gap-4">
+                <div className="w-12 h-12 rounded-xl bg-gold/10 flex items-center justify-center shrink-0">
+                  <Phone size={20} className="text-gold" />
+                </div>
+                <div>
+                  <div className="text-sm text-zinc-500">Andrea Williams</div>
+                  <span className="text-white">+39 02 XXX XXXX</span>
+                </div>
+              </div>
+
+              <div className="flex items-center gap-4">
+                <div className="w-12 h-12 rounded-xl bg-gold/10 flex items-center justify-center shrink-0">
                   <MapPin size={20} className="text-gold" />
                 </div>
                 <div>
-                  <div className="text-sm text-zinc-500">Location</div>
-                  <span className="text-white">London, United Kingdom</span>
+                  <div className="text-sm text-zinc-500">Locations</div>
+                  <span className="text-white">Milan, Italy &middot; London, UK</span>
                 </div>
               </div>
             </div>

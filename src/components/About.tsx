@@ -1,34 +1,34 @@
 import { motion } from 'framer-motion'
 import { useInView } from './hooks'
-import { TrendingUp, Shield, Cpu, Globe } from 'lucide-react'
+import { TrendingUp, Shield, BarChart3, Globe } from 'lucide-react'
 
 const stats = [
-  { value: '$50M+', label: 'Assets Under Strategy' },
-  { value: '18%', label: 'Avg. Annual Return' },
-  { value: '0.85', label: 'Sharpe Ratio' },
-  { value: '24/7', label: 'Market Monitoring' },
+  { value: '20+', label: 'Years Experience' },
+  { value: 'Multi-Asset', label: 'Derivatives Focus' },
+  { value: 'Global', label: 'Market Coverage' },
+  { value: 'Milan & London', label: 'Presence' },
 ]
 
 const pillars = [
   {
-    icon: Cpu,
-    title: 'Quantitative Edge',
-    description: 'Machine learning models trained on decades of market microstructure data to identify alpha signals.',
+    icon: BarChart3,
+    title: 'Capital Markets',
+    description: 'Deep expertise across equity, fixed income, FX, and commodity derivatives, with a focus on structured products and bespoke hedging solutions.',
   },
   {
     icon: Shield,
-    title: 'Risk First',
-    description: 'Dynamic position sizing and tail-risk hedging ensure capital preservation across all market regimes.',
+    title: 'Risk Management',
+    description: 'Institutional-grade risk frameworks combining quantitative models with seasoned market judgement to protect and grow capital.',
   },
   {
     icon: TrendingUp,
-    title: 'Systematic Execution',
-    description: 'Fully automated trading infrastructure with sub-millisecond latency and 99.99% uptime.',
+    title: 'Quantitative Strategies',
+    description: 'Systematic, data-driven investment strategies leveraging machine learning, statistical arbitrage, and advanced signal processing.',
   },
   {
     icon: Globe,
-    title: 'Global Markets',
-    description: 'Multi-asset strategies spanning equities, crypto, commodities, and prediction markets.',
+    title: 'Advisory & Family Office',
+    description: 'Tailored advisory services for families and institutions, from wealth structuring to direct investment origination across global markets.',
   },
 ]
 
@@ -53,7 +53,7 @@ export default function About() {
               transition={{ delay: i * 0.1 + 0.3 }}
               className="text-center"
             >
-              <div className="text-3xl md:text-4xl font-display font-bold text-gold mb-2">
+              <div className="text-2xl md:text-3xl font-display font-bold text-gold mb-2">
                 {stat.value}
               </div>
               <div className="text-sm text-zinc-500 uppercase tracking-wider">
@@ -72,10 +72,10 @@ export default function About() {
           >
             <span className="text-gold text-sm tracking-widest uppercase">About Us</span>
             <h2 className="text-4xl md:text-5xl font-display font-bold mt-4 leading-tight">
-              Where Finance Meets
+              Conviction Meets
               <br />
               <span className="bg-gradient-to-r from-gold-light to-gold bg-clip-text text-transparent">
-                Technology
+                Discipline
               </span>
             </h2>
           </motion.div>
@@ -87,14 +87,34 @@ export default function About() {
             className="flex items-center"
           >
             <p className="text-zinc-400 text-lg leading-relaxed">
-              APJ Kapital is a quantitative investment firm that leverages advanced
-              statistical models, machine learning, and proprietary technology to
-              generate consistent risk-adjusted returns. Founded on the principle
-              that markets are complex adaptive systems, we build strategies that
-              evolve with the markets they trade.
+              APJ Kapital is a multi-asset investment and advisory firm built on
+              decades of capital markets experience. Founded by professionals with
+              deep roots in derivatives, structured products, and institutional
+              trading, we combine seasoned market insight with next-generation
+              quantitative technology. Our family office heritage means we think
+              like owners — focused on long-term value, capital preservation,
+              and sustainable growth.
             </p>
           </motion.div>
         </div>
+
+        {/* Mission statement */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          animate={inView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.8, delay: 0.5 }}
+          className="mb-24 p-10 rounded-2xl border border-gold/10 bg-gradient-to-br from-gold/[0.03] to-transparent relative overflow-hidden"
+        >
+          <div className="absolute top-0 right-0 w-64 h-64 bg-gold/5 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2" />
+          <div className="relative">
+            <span className="text-gold text-sm tracking-widest uppercase block mb-4">Our Mission</span>
+            <blockquote className="text-2xl md:text-3xl font-display font-medium leading-snug text-white/90">
+              &ldquo;To deliver institutional-quality investment solutions with the
+              agility of a family office — bridging traditional capital markets
+              expertise with the frontier of quantitative innovation.&rdquo;
+            </blockquote>
+          </div>
+        </motion.div>
 
         {/* Pillars */}
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">

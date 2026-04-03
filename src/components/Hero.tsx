@@ -45,7 +45,6 @@ function ParticleField() {
         ctx.fillStyle = `rgba(201, 168, 76, ${p.opacity})`
         ctx.fill()
 
-        // Connect nearby particles
         for (let j = i + 1; j < particles.length; j++) {
           const dx = p.x - particles[j].x
           const dy = p.y - particles[j].y
@@ -77,11 +76,9 @@ function ParticleField() {
 export default function Hero() {
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-      {/* Background */}
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_rgba(201,168,76,0.08)_0%,_transparent_70%)]" />
       <ParticleField />
 
-      {/* Grid overlay */}
       <div
         className="absolute inset-0 opacity-[0.03]"
         style={{
@@ -92,15 +89,29 @@ export default function Hero() {
       />
 
       <div className="relative z-10 text-center px-6 max-w-5xl mx-auto">
+        {/* Bull logo */}
+        <motion.div
+          initial={{ opacity: 0, scale: 0.8 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1] }}
+          className="mb-8"
+        >
+          <img
+            src="/bull-logo.svg"
+            alt="APJ Kapital Bull"
+            className="h-28 md:h-36 w-auto mx-auto drop-shadow-[0_0_40px_rgba(201,168,76,0.3)]"
+          />
+        </motion.div>
+
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
+          transition={{ duration: 1, delay: 0.3, ease: [0.22, 1, 0.36, 1] }}
         >
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-gold/20 bg-gold/5 mb-8">
             <div className="w-2 h-2 rounded-full bg-gold animate-pulse" />
             <span className="text-gold text-sm tracking-widest uppercase font-medium">
-              Quantitative Investment
+              Capital Markets &middot; Derivatives &middot; Advisory
             </span>
           </div>
         </motion.div>
@@ -108,7 +119,7 @@ export default function Hero() {
         <motion.h1
           initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
+          transition={{ duration: 1, delay: 0.5, ease: [0.22, 1, 0.36, 1] }}
           className="text-5xl md:text-7xl lg:text-8xl font-display font-bold tracking-tight leading-[0.95]"
         >
           <span className="text-white">APJ</span>{' '}
@@ -120,32 +131,31 @@ export default function Hero() {
         <motion.p
           initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1, delay: 0.4, ease: [0.22, 1, 0.36, 1] }}
+          transition={{ duration: 1, delay: 0.7, ease: [0.22, 1, 0.36, 1] }}
           className="mt-8 text-lg md:text-xl text-zinc-400 max-w-2xl mx-auto leading-relaxed"
         >
-          Systematic, data-driven strategies across global markets.
-          <br className="hidden md:block" />
-          We combine quantitative research with disciplined execution.
+          Multi-asset investment and advisory. Decades of capital markets
+          expertise, powered by quantitative innovation.
         </motion.p>
 
         <motion.div
           initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1, delay: 0.6, ease: [0.22, 1, 0.36, 1] }}
+          transition={{ duration: 1, delay: 0.9, ease: [0.22, 1, 0.36, 1] }}
           className="mt-12 flex flex-col sm:flex-row items-center justify-center gap-4"
         >
           <a
-            href="#strategy"
+            href="#about"
             className="group px-8 py-4 bg-gradient-to-r from-gold to-gold-dark text-black font-semibold rounded-lg hover:shadow-[0_0_40px_rgba(201,168,76,0.3)] transition-all duration-500"
           >
-            Our Strategy
+            Discover More
             <span className="inline-block ml-2 group-hover:translate-x-1 transition-transform">&rarr;</span>
           </a>
           <a
-            href="#performance"
+            href="#contact"
             className="px-8 py-4 border border-zinc-700 text-zinc-300 rounded-lg hover:border-gold/50 hover:text-gold transition-all duration-300"
           >
-            View Performance
+            Contact Us
           </a>
         </motion.div>
 
@@ -153,7 +163,7 @@ export default function Hero() {
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ delay: 1.5 }}
+          transition={{ delay: 1.8 }}
           className="absolute bottom-8 left-1/2 -translate-x-1/2"
         >
           <motion.div
