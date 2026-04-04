@@ -67,7 +67,7 @@ export default function HeroIntro() {
             className="absolute inset-[-50px] bg-gold/[0.025] rounded-full blur-[80px]"
           />
           <img
-            src="/bull-logo.svg"
+            src="/bull-photo.webp"
             alt="APJ Kapital — Charging Bull"
             className="w-full h-auto relative drop-shadow-[0_0_50px_rgba(201,168,76,0.08)]"
           />

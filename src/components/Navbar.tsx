@@ -10,7 +10,7 @@ export default function Navbar() {
     >
       <div className="max-w-[1400px] mx-auto px-6 md:px-16 lg:px-24 flex items-center justify-between h-16">
         <a href="#" className="flex items-center gap-2.5">
-          <img src="/bull-logo.svg" alt="APJ Kapital" className="h-8 w-auto" />
+          <img src="/bull-photo.webp" alt="APJ Kapital" className="h-8 w-auto" />
           <span className="text-white font-display font-semibold text-[14px] tracking-[0.1em]">
             APJ KAPITAL
           </span>

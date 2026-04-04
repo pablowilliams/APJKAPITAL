@@ -65,7 +65,7 @@ export default function LoadingScreen({ onComplete }: Props) {
           transition={{ duration: 1.2, ease: 'easeOut' }}
         >
           <img
-            src="/bull-logo.svg"
+            src="/bull-photo.webp"
             alt="APJ Kapital"
             className="w-full h-auto"
           />
