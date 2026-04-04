@@ -58,7 +58,7 @@ export default function Contact() {
                 </div>
                 <div>
                   <div className="text-sm text-zinc-500">Guido Williams</div>
-                  <span className="text-white">+39 02 XXX XXXX</span>
+                  <a href="tel:+393357642008" className="text-white hover:text-gold transition-colors">+39 335 764 2008</a>
                 </div>
               </div>
 
@@ -68,7 +68,7 @@ export default function Contact() {
                 </div>
                 <div>
                   <div className="text-sm text-zinc-500">Andrea Williams</div>
-                  <span className="text-white">+39 02 XXX XXXX</span>
+                  <a href="tel:+447535666050" className="text-white hover:text-gold transition-colors">+44 7535 666050</a>
                 </div>
               </div>
 

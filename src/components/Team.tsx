@@ -9,7 +9,7 @@ const team = [
     bio: 'Multi-asset derivative specialist with decades of experience across capital markets. Former institutional roles in Milan and London. Imperial College Management School. Leads firm strategy, client relationships, and investment oversight.',
     initials: 'GW',
     email: 'guido@apjkapital.com',
-    phone: '+39 02 XXX XXXX',
+    phone: '+39 335 764 2008',
     linkedin: 'https://www.linkedin.com/in/guido-williams-a471a11/',
   },
   {
@@ -18,7 +18,7 @@ const team = [
     bio: 'Oversees firm operations, compliance, and client services. Brings extensive experience in business management and financial administration to ensure seamless execution across all firm activities.',
     initials: 'AW',
     email: 'andrea@apjkapital.com',
-    phone: '+39 02 XXX XXXX',
+    phone: '+44 7535 666050',
     linkedin: 'https://www.linkedin.com/in/andreapbwilliams/',
   },
   {
@@ -27,8 +27,8 @@ const team = [
     bio: 'Quantitative researcher and technologist. MSc from UCL. Specialises in systematic trading, machine learning, and market microstructure. Builds the data-driven strategies and technology infrastructure that power APJ Kapital\'s next-generation edge.',
     initials: 'PW',
     email: 'pablo@apjkapital.com',
-    phone: '+44 XXX XXX XXXX',
-    linkedin: '#',
+    phone: '+44 7508 522776',
+    linkedin: 'https://www.linkedin.com/in/pablowilliams/',
   },
 ]
 
