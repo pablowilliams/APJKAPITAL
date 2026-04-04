@@ -1,69 +1,64 @@
 import { useState, useCallback } from 'react'
-import { AnimatePresence } from 'framer-motion'
 import Navbar from './components/Navbar'
-import Home from './pages/Home'
-import AboutPage from './pages/AboutPage'
-import StrategyPage from './pages/StrategyPage'
-import PerformancePage from './pages/PerformancePage'
-import TeamPage from './pages/TeamPage'
-import ContactPage from './pages/ContactPage'
-import ResearchPage from './pages/ResearchPage'
-import BullTransition from './components/BullTransition'
+import HeroIntro from './components/HeroIntro'
+import Section from './components/Section'
+import AboutContent from './sections/AboutContent'
+import StrategyContent from './sections/StrategyContent'
+import TeamContent from './sections/TeamContent'
+import ContactContent from './sections/ContactContent'
+import ResearchContent from './sections/ResearchContent'
+import InsightsContent from './sections/InsightsContent'
+import VenturesContent from './sections/VenturesContent'
 
-export type Page = 'home' | 'about' | 'strategy' | 'performance' | 'team' | 'contact' | 'research'
+export type SectionId = 'about' | 'strategy' | 'team' | 'contact' | 'research' | 'insights' | 'ventures'
+
+const sections: { id: SectionId; label: string }[] = [
+  { id: 'about', label: 'About' },
+  { id: 'strategy', label: 'Strategy' },
+  { id: 'insights', label: 'Insights' },
+  { id: 'ventures', label: 'Ventures' },
+  { id: 'team', label: 'Team' },
+  { id: 'research', label: 'Research' },
+  { id: 'contact', label: 'Contact' },
+]
 
 function App() {
-  const [currentPage, setCurrentPage] = useState<Page>('home')
-  const [isTransitioning, setIsTransitioning] = useState(false)
-  const [transitionTarget, setTransitionTarget] = useState<Page>('home')
+  const [openSection, setOpenSection] = useState<SectionId | null>(null)
 
-  const navigateTo = useCallback((page: Page) => {
-    if (page === currentPage || isTransitioning) return
-    setTransitionTarget(page)
-    setIsTransitioning(true)
-  }, [currentPage, isTransitioning])
-
-  const handleTransitionMid = useCallback(() => {
-    setCurrentPage(transitionTarget)
-  }, [transitionTarget])
-
-  const handleTransitionEnd = useCallback(() => {
-    setIsTransitioning(false)
+  const toggle = useCallback((id: SectionId) => {
+    setOpenSection((prev) => (prev === id ? null : id))
   }, [])
 
-  const renderPage = () => {
-    switch (currentPage) {
-      case 'home': return <Home onNavigate={navigateTo} />
-      case 'about': return <AboutPage />
-      case 'strategy': return <StrategyPage />
-      case 'performance': return <PerformancePage />
-      case 'team': return <TeamPage />
-      case 'contact': return <ContactPage />
-      case 'research': return <ResearchPage />
-    }
+  const contentMap: Record<SectionId, React.ReactNode> = {
+    about: <AboutContent />,
+    strategy: <StrategyContent />,
+    team: <TeamContent />,
+    contact: <ContactContent />,
+    research: <ResearchContent />,
+    insights: <InsightsContent />,
+    ventures: <VenturesContent />,
   }
 
   return (
-    <div className="min-h-screen bg-dark">
-      <Navbar currentPage={currentPage} onNavigate={navigateTo} />
+    <div className="min-h-screen bg-[#050506]">
+      <Navbar />
+      <HeroIntro />
 
-      <AnimatePresence mode="wait">
-        <BullTransition
-          key={isTransitioning ? `trans-${transitionTarget}` : `page-${currentPage}`}
-          isTransitioning={isTransitioning}
-          targetPage={transitionTarget}
-          onMidpoint={handleTransitionMid}
-          onComplete={handleTransitionEnd}
-        />
-      </AnimatePresence>
-
-      <main className="pt-[72px]">
-        <AnimatePresence mode="wait">
-          <div key={currentPage}>
-            {renderPage()}
-          </div>
-        </AnimatePresence>
-      </main>
+      <div className="px-6 md:px-16 lg:px-24 py-20 max-w-[1400px] mx-auto">
+        <div className="space-y-5">
+          {sections.map((s) => (
+            <Section
+              key={s.id}
+              id={s.id}
+              label={s.label}
+              isOpen={openSection === s.id}
+              onToggle={() => toggle(s.id)}
+            >
+              {contentMap[s.id]}
+            </Section>
+          ))}
+        </div>
+      </div>
     </div>
   )
 }

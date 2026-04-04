@@ -8,7 +8,7 @@
   --color-gold-dark: #a08030;
   --color-dark: #050506;
   --color-dark-card: #0b0b0d;
-  --color-dark-border: #18181c;
+  --color-dark-border: #1a1a1f;
   --color-dark-surface: #0e0e11;
 }
 
@@ -22,9 +22,8 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   overflow-x: hidden;
-  font-size: 15px;
+  font-size: 16px;
   line-height: 1.75;
-  letter-spacing: 0.01em;
 }
 
 ::selection { background: rgba(201,168,76,0.2); color: #fff; }
@@ -36,37 +35,5 @@ h1, h2, h3, h4 {
   line-height: 1.15;
 }
 
-p { line-height: 1.85; }
-
+p { line-height: 1.9; }
 strong { color: #e4e4e7; }
-
-/* Bubble card */
-.bubble {
-  position: relative;
-  background: #0e0e12;
-  border: 1px solid #1e1e24;
-  border-radius: 20px;
-  padding: 28px 32px;
-}
-.bubble::after {
-  content: '';
-  position: absolute;
-  bottom: -10px;
-  left: 32px;
-  width: 20px;
-  height: 20px;
-  background: #0e0e12;
-  border-right: 1px solid #1e1e24;
-  border-bottom: 1px solid #1e1e24;
-  transform: rotate(45deg);
-}
-
-/* Subtle ambient */
-body::before {
-  content: '';
-  position: fixed;
-  inset: 0;
-  background: radial-gradient(ellipse at 15% 0%, rgba(201,168,76,0.012) 0%, transparent 50%);
-  pointer-events: none;
-  z-index: 0;
-}
