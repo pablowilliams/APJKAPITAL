@@ -1,4 +1,6 @@
 import { useState, useCallback } from 'react'
+import { AnimatePresence } from 'framer-motion'
+import LoadingScreen from './components/LoadingScreen'
 import Navbar from './components/Navbar'
 import HeroIntro from './components/HeroIntro'
 import Section from './components/Section'
@@ -23,6 +25,7 @@ const sections: { id: SectionId; label: string }[] = [
 ]
 
 function App() {
+  const [loading, setLoading] = useState(true)
   const [openSection, setOpenSection] = useState<SectionId | null>(null)
 
   const toggle = useCallback((id: SectionId) => {
@@ -41,24 +44,32 @@ function App() {
 
   return (
     <div className="min-h-screen bg-[#050506]">
-      <Navbar />
-      <HeroIntro />
+      <AnimatePresence>
+        {loading && <LoadingScreen onComplete={() => setLoading(false)} />}
+      </AnimatePresence>
 
-      <div className="px-6 md:px-16 lg:px-24 py-20 max-w-[1400px] mx-auto">
-        <div className="space-y-5">
-          {sections.map((s) => (
-            <Section
-              key={s.id}
-              id={s.id}
-              label={s.label}
-              isOpen={openSection === s.id}
-              onToggle={() => toggle(s.id)}
-            >
-              {contentMap[s.id]}
-            </Section>
-          ))}
-        </div>
-      </div>
+      {!loading && (
+        <>
+          <Navbar />
+          <HeroIntro />
+
+          <div className="px-6 md:px-16 lg:px-24 py-20 max-w-[1400px] mx-auto">
+            <div className="space-y-5">
+              {sections.map((s) => (
+                <Section
+                  key={s.id}
+                  id={s.id}
+                  label={s.label}
+                  isOpen={openSection === s.id}
+                  onToggle={() => toggle(s.id)}
+                >
+                  {contentMap[s.id]}
+                </Section>
+              ))}
+            </div>
+          </div>
+        </>
+      )}
     </div>
   )
 }
