@@ -117,7 +117,7 @@ export default function Section({ id, label, isOpen, onToggle, children }: Props
               className="flex items-center gap-5 px-10 md:px-14 pt-10 pb-2"
             >
               <motion.img
-                src="/bull-photo.webp"
+                src="/bull.png"
                 alt=""
                 className="h-10 w-auto"
                 style={{ filter: `drop-shadow(0 0 8px ${t.accent}30)` }}

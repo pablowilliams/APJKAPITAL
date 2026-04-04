@@ -9,7 +9,6 @@ export default function HeroIntro() {
       </div>
 
       <div className="relative z-10 w-full max-w-[1400px] mx-auto px-6 md:px-16 lg:px-24 flex flex-col lg:flex-row items-center gap-12 lg:gap-20">
-        {/* Left: Text */}
         <div className="flex-1 max-w-[600px]">
           <motion.p
             initial={{ opacity: 0, y: 16 }}
@@ -53,12 +52,12 @@ export default function HeroIntro() {
           </motion.div>
         </div>
 
-        {/* Right: Bull */}
+        {/* Bull image */}
         <motion.div
           initial={{ opacity: 0, x: 40 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 1.2, delay: 0.3, ease: [0.22, 1, 0.36, 1] }}
-          className="flex-shrink-0 w-[280px] md:w-[380px] lg:w-[460px] relative"
+          className="flex-shrink-0 w-[280px] md:w-[380px] lg:w-[480px] relative"
         >
           <motion.div
             initial={{ opacity: 0 }}
@@ -67,9 +66,9 @@ export default function HeroIntro() {
             className="absolute inset-[-50px] bg-gold/[0.025] rounded-full blur-[80px]"
           />
           <img
-            src="/bull-photo.webp"
+            src="/bull.png"
             alt="APJ Kapital — Charging Bull"
-            className="w-full h-auto relative drop-shadow-[0_0_50px_rgba(201,168,76,0.08)]"
+            className="w-full h-auto relative drop-shadow-[0_0_40px_rgba(201,168,76,0.1)]"
           />
         </motion.div>
       </div>

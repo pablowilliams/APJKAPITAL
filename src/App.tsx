@@ -14,7 +14,7 @@ import VenturesContent from './sections/VenturesContent'
 
 export type SectionId = 'about' | 'strategy' | 'team' | 'contact' | 'research' | 'insights' | 'ventures'
 
-const sections: { id: SectionId; label: string }[] = [
+export const sections: { id: SectionId; label: string }[] = [
   { id: 'about', label: 'About' },
   { id: 'strategy', label: 'Strategy' },
   { id: 'insights', label: 'Insights' },
@@ -26,10 +26,14 @@ const sections: { id: SectionId; label: string }[] = [
 
 function App() {
   const [loading, setLoading] = useState(true)
-  const [openSection, setOpenSection] = useState<SectionId | null>(null)
+  const [openSection, setOpenSection] = useState<SectionId | null>('about')
 
   const toggle = useCallback((id: SectionId) => {
     setOpenSection((prev) => (prev === id ? null : id))
+    // Scroll to section
+    setTimeout(() => {
+      document.getElementById(`section-${id}`)?.scrollIntoView({ behavior: 'smooth', block: 'start' })
+    }, 100)
   }, [])
 
   const contentMap: Record<SectionId, React.ReactNode> = {
@@ -50,7 +54,7 @@ function App() {
 
       {!loading && (
         <>
-          <Navbar />
+          <Navbar openSection={openSection} onNavigate={toggle} />
           <HeroIntro />
 
           <div className="px-6 md:px-16 lg:px-24 py-20 max-w-[1400px] mx-auto">
