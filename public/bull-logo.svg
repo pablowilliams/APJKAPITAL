@@ -1,137 +1,116 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 200">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 280">
   <defs>
-    <linearGradient id="gold" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#e0c97f"/>
-      <stop offset="50%" stop-color="#c9a84c"/>
-      <stop offset="100%" stop-color="#a08030"/>
-    </linearGradient>
-    <linearGradient id="goldLight" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#e0c97f"/>
-      <stop offset="100%" stop-color="#c9a84c"/>
+    <linearGradient id="goldBody" x1="0%" y1="0%" x2="100%" y2="80%">
+      <stop offset="0%" stop-color="#e8d08a"/>
+      <stop offset="40%" stop-color="#c9a84c"/>
+      <stop offset="100%" stop-color="#8a6820"/>
     </linearGradient>
     <linearGradient id="goldDark" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#c9a84c"/>
-      <stop offset="100%" stop-color="#a08030"/>
-    </linearGradient>
-    <linearGradient id="goldDeep" x1="0%" y1="0%" x2="100%" y2="100%">
       <stop offset="0%" stop-color="#a08030"/>
-      <stop offset="100%" stop-color="#8a6e28"/>
+      <stop offset="100%" stop-color="#6a5418"/>
     </linearGradient>
-    <linearGradient id="goldBodyV" x1="0%" y1="0%" x2="0%" y2="100%">
-      <stop offset="0%" stop-color="#e0c97f"/>
-      <stop offset="100%" stop-color="#a08030"/>
+    <linearGradient id="goldHighlight" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#f0dfa0"/>
+      <stop offset="100%" stop-color="#c9a84c"/>
     </linearGradient>
   </defs>
 
-  <!-- LEFT HORN - sweeping upward and outward -->
-  <polygon points="58,42 42,10 50,18" fill="#e0c97f" opacity="0.95"/>
-  <polygon points="50,18 42,10 36,16 48,30" fill="#c9a84c" opacity="0.9"/>
-  <polygon points="48,30 50,18 58,42" fill="#b89a40" opacity="0.85"/>
+  <!-- CHARGING BULL FROM SIDE - head down, powerful stance -->
 
-  <!-- RIGHT HORN - sweeping upward and outward -->
-  <polygon points="102,42 118,10 110,18" fill="#e0c97f" opacity="0.95"/>
-  <polygon points="110,18 118,10 124,16 112,30" fill="#c9a84c" opacity="0.9"/>
-  <polygon points="112,30 110,18 102,42" fill="#b89a40" opacity="0.85"/>
+  <!-- Back horn -->
+  <polygon points="95,72 78,30 88,68" fill="#a08030"/>
+  <polygon points="78,30 70,38 88,68" fill="#8a6820"/>
 
-  <!-- HEAD - TOP (crown) -->
-  <polygon points="58,42 80,34 102,42" fill="url(#goldLight)"/>
-  <polygon points="58,42 68,38 80,34" fill="#dcc57a"/>
-  <polygon points="80,34 92,38 102,42" fill="#d4b96e"/>
+  <!-- Front horn -->
+  <polygon points="110,68 120,25 104,62" fill="url(#goldHighlight)"/>
+  <polygon points="120,25 128,32 110,68" fill="#c9a84c"/>
 
-  <!-- LEFT EAR -->
-  <polygon points="54,40 58,42 56,48" fill="#c9a84c" opacity="0.8"/>
+  <!-- Head top -->
+  <polygon points="88,68 100,58 110,68 104,62" fill="#e0c97f"/>
+  <polygon points="78,65 88,68 100,58" fill="#d4b96e"/>
 
-  <!-- RIGHT EAR -->
-  <polygon points="106,40 102,42 104,48" fill="#c9a84c" opacity="0.8"/>
+  <!-- Forehead -->
+  <polygon points="88,68 110,68 108,82 90,80" fill="url(#goldBody)"/>
 
-  <!-- HEAD - FACE (front-facing, head held high) -->
-  <polygon points="58,42 80,50 102,42" fill="url(#gold)"/>
-  <polygon points="58,42 56,48 66,54 80,50" fill="#c9a84c"/>
-  <polygon points="102,42 104,48 94,54 80,50" fill="#b89a40"/>
+  <!-- Left face -->
+  <polygon points="78,65 88,68 90,80 80,88" fill="#b89a40"/>
 
-  <!-- EYES (subtle dark triangles) -->
-  <polygon points="66,46 70,44 68,48" fill="#8a6e28" opacity="0.6"/>
-  <polygon points="94,46 90,44 92,48" fill="#8a6e28" opacity="0.6"/>
+  <!-- Right face -->
+  <polygon points="110,68 118,72 115,85 108,82" fill="#a08030"/>
 
-  <!-- SNOUT / MUZZLE -->
-  <polygon points="66,54 80,50 94,54 88,62 72,62" fill="url(#goldDark)"/>
-  <polygon points="72,62 80,58 88,62" fill="#a08030"/>
-  <polygon points="72,62 88,62 84,66 76,66" fill="#96762c"/>
+  <!-- Snout (lowered, charging position) -->
+  <polygon points="80,88 90,80 108,82 115,85 112,98 85,100" fill="url(#goldDark)"/>
+  <polygon points="85,100 112,98 108,106 88,108" fill="#7a5c1a"/>
 
-  <!-- NOSTRILS (tiny dark marks) -->
-  <polygon points="77,63 79,61 80,63" fill="#8a6e28" opacity="0.5"/>
-  <polygon points="81,63 83,61 82,63" fill="#8a6e28" opacity="0.5"/>
+  <!-- Nostril -->
+  <circle cx="95" cy="100" r="2.5" fill="#5a4210" opacity="0.6"/>
+  <circle cx="105" cy="99" r="2.5" fill="#5a4210" opacity="0.6"/>
 
-  <!-- NECK - wide and powerful, head held high -->
-  <polygon points="56,48 66,54 72,62 58,72" fill="url(#goldDark)"/>
-  <polygon points="104,48 94,54 88,62 102,72" fill="#a08030"/>
-  <polygon points="72,62 80,66 88,62 102,72 80,76 58,72" fill="#b89a40"/>
+  <!-- Eye -->
+  <circle cx="98" cy="74" r="2" fill="#1a1a1a"/>
+  <circle cx="98.5" cy="73.5" r="0.7" fill="#e0c97f" opacity="0.6"/>
 
-  <!-- SHOULDER HUMP - muscular prominence -->
-  <polygon points="48,72 58,72 54,68 50,70" fill="#c9a84c"/>
-  <polygon points="48,72 58,72 80,76 66,82 44,80" fill="url(#gold)"/>
-  <polygon points="112,72 102,72 106,68 110,70" fill="#b89a40"/>
-  <polygon points="112,72 102,72 80,76 94,82 116,80" fill="url(#goldDark)"/>
+  <!-- Ear -->
+  <polygon points="82,60 76,52 84,64" fill="#c9a84c" opacity="0.8"/>
+  <polygon points="112,58 120,50 114,64" fill="#b89a40" opacity="0.8"/>
 
-  <!-- UPPER BODY / TORSO - broad chest, standing tall -->
-  <polygon points="44,80 66,82 80,76 94,82 116,80 112,92 80,94 48,92" fill="url(#gold)"/>
-  <polygon points="44,80 48,92 56,90 66,82" fill="#c9a84c"/>
-  <polygon points="116,80 112,92 104,90 94,82" fill="#a08030"/>
+  <!-- NECK - thick, muscular -->
+  <polygon points="80,88 85,100 90,110 120,115 135,100 118,72 115,85" fill="url(#goldBody)"/>
 
-  <!-- MID BODY -->
-  <polygon points="48,92 80,94 112,92 110,106 80,108 50,106" fill="url(#goldDark)"/>
-  <polygon points="48,92 50,106 58,104 56,94" fill="#b89a40"/>
-  <polygon points="112,92 110,106 102,104 104,94" fill="#96762c"/>
+  <!-- SHOULDER HUMP -->
+  <polygon points="120,115 135,100 160,85 175,82 185,88 180,105 155,115" fill="url(#goldBody)"/>
+  <polygon points="160,85 175,82 185,88 175,90" fill="#e0c97f"/>
 
-  <!-- LOWER BODY / BELLY -->
-  <polygon points="50,106 80,108 110,106 108,120 80,122 52,120" fill="#b89a40"/>
-  <polygon points="50,106 52,120 60,118 58,108" fill="#a08030"/>
-  <polygon points="110,106 108,120 100,118 102,108" fill="#96762c"/>
+  <!-- UPPER BODY -->
+  <polygon points="155,115 180,105 210,100 240,102 260,108 250,125 200,130 155,125" fill="url(#goldBody)"/>
 
-  <!-- TAIL - hanging down calmly with slight curve -->
-  <polygon points="112,92 118,88 120,94 116,102" fill="#c9a84c"/>
-  <polygon points="118,88 124,84 122,92 120,94" fill="#e0c97f"/>
-  <polygon points="124,84 128,86 126,94 122,92" fill="#dcc57a"/>
-  <polygon points="126,94 128,86 130,92 128,100" fill="#c9a84c"/>
-  <polygon points="128,100 130,92 132,98 130,106" fill="#b89a40"/>
+  <!-- MAIN BODY -->
+  <polygon points="200,130 250,125 280,120 310,118 320,125 310,140 260,145 200,142" fill="url(#goldBody)"/>
+  <polygon points="260,145 310,140 330,135 340,138 335,150 290,155 260,150" fill="#b89a40"/>
 
-  <!-- FRONT LEFT LEG - standing straight -->
-  <polygon points="52,120 62,118 64,140 54,142" fill="url(#goldDark)"/>
-  <polygon points="54,142 64,140 66,160 56,162" fill="#a08030"/>
-  <polygon points="56,162 66,160 68,174 58,176" fill="#96762c"/>
+  <!-- BELLY -->
+  <polygon points="120,115 155,125 200,142 260,150 250,160 190,165 140,155 110,135 90,110" fill="url(#goldDark)"/>
+
+  <!-- REAR BODY -->
+  <polygon points="310,118 340,110 355,115 350,135 335,150 310,140" fill="#c9a84c"/>
+  <polygon points="340,110 355,115 360,108" fill="#b89a40"/>
+
+  <!-- TAIL -->
+  <path d="M350,135 Q365,120 370,100 Q372,90 368,85" stroke="url(#goldBody)" stroke-width="4" fill="none" stroke-linecap="round"/>
+  <path d="M368,85 Q362,78 370,72 Q378,68 374,80" fill="#c9a84c"/>
+
+  <!-- FRONT LEFT LEG (extended forward - charging) -->
+  <polygon points="110,135 120,130 125,160 118,180 108,182 105,165" fill="url(#goldDark)"/>
+  <polygon points="105,165 118,180 108,182 100,178" fill="#7a5c1a"/>
   <!-- Hoof -->
-  <polygon points="58,176 68,174 70,180 56,180" fill="#8a6e28"/>
-  <polygon points="56,180 70,180 68,184 54,184" fill="#7a6224"/>
+  <polygon points="100,178 108,182 118,180 115,186 102,186 98,182" fill="#1a1a1a"/>
 
-  <!-- FRONT RIGHT LEG - standing straight, slightly offset -->
-  <polygon points="68,120 78,118 80,140 70,142" fill="#b89a40"/>
-  <polygon points="70,142 80,140 82,160 72,162" fill="#a08030"/>
-  <polygon points="72,162 82,160 84,174 74,176" fill="#8a6e28"/>
-  <!-- Hoof -->
-  <polygon points="74,176 84,174 86,180 72,180" fill="#7a6224"/>
-  <polygon points="72,180 86,180 84,184 70,184" fill="#6e5820"/>
+  <!-- FRONT RIGHT LEG (back position) -->
+  <polygon points="155,140 165,135 168,168 160,188 150,190 148,172" fill="#a08030"/>
+  <polygon points="148,172 160,188 150,190 145,185" fill="#6a5418"/>
+  <polygon points="145,185 150,190 160,188 158,194 147,194 143,189" fill="#1a1a1a"/>
 
-  <!-- REAR LEFT LEG - standing straight -->
-  <polygon points="86,122 96,120 98,142 88,144" fill="url(#goldDark)"/>
-  <polygon points="88,144 98,142 100,162 90,164" fill="#a08030"/>
-  <polygon points="90,164 100,162 102,176 92,178" fill="#96762c"/>
-  <!-- Hoof -->
-  <polygon points="92,178 102,176 104,182 90,182" fill="#8a6e28"/>
-  <polygon points="90,182 104,182 102,186 88,186" fill="#7a6224"/>
+  <!-- REAR LEFT LEG -->
+  <polygon points="280,150 290,145 295,175 288,195 278,197 275,178" fill="url(#goldDark)"/>
+  <polygon points="275,178 288,195 278,197 272,192" fill="#7a5c1a"/>
+  <polygon points="272,192 278,197 288,195 286,201 274,201 270,196" fill="#1a1a1a"/>
 
-  <!-- REAR RIGHT LEG - standing straight -->
-  <polygon points="100,122 110,120 112,142 102,144" fill="#b89a40"/>
-  <polygon points="102,144 112,142 114,162 104,164" fill="#96762c"/>
-  <polygon points="104,164 114,162 116,176 106,178" fill="#8a6e28"/>
-  <!-- Hoof -->
-  <polygon points="106,178 116,176 118,182 104,182" fill="#7a6224"/>
-  <polygon points="104,182 118,182 116,186 102,186" fill="#6e5820"/>
+  <!-- REAR RIGHT LEG (kicked back) -->
+  <polygon points="320,145 335,140 340,170 332,192 322,194 318,175" fill="#a08030"/>
+  <polygon points="318,175 332,192 322,194 316,188" fill="#6a5418"/>
+  <polygon points="316,188 322,194 332,192 330,198 318,198 314,193" fill="#1a1a1a"/>
 
-  <!-- HIGHLIGHT EDGES for faceted/geometric look -->
-  <line x1="80" y1="34" x2="80" y2="50" stroke="#e8d494" stroke-width="0.5" opacity="0.4"/>
-  <line x1="80" y1="76" x2="80" y2="94" stroke="#e8d494" stroke-width="0.4" opacity="0.3"/>
-  <line x1="44" y1="80" x2="116" y2="80" stroke="#e8d494" stroke-width="0.4" opacity="0.25"/>
-  <line x1="48" y1="92" x2="112" y2="92" stroke="#e8d494" stroke-width="0.3" opacity="0.2"/>
-  <line x1="58" y1="42" x2="80" y2="50" stroke="#e8d494" stroke-width="0.4" opacity="0.3"/>
-  <line x1="102" y1="42" x2="80" y2="50" stroke="#e8d494" stroke-width="0.4" opacity="0.3"/>
+  <!-- MUSCLE DEFINITION LINES -->
+  <line x1="135" y1="100" x2="175" y2="90" stroke="#e8d08a" stroke-width="0.5" opacity="0.3"/>
+  <line x1="180" y1="105" x2="250" y2="125" stroke="#e8d08a" stroke-width="0.5" opacity="0.25"/>
+  <line x1="200" y1="130" x2="300" y2="135" stroke="#e8d08a" stroke-width="0.4" opacity="0.2"/>
+
+  <!-- OUTLINE PATH for stroke-draw animation -->
+  <path id="bull-outline"
+    d="M78,30 L95,72 L100,58 L120,25 L128,32 L118,72 L135,100 L175,82 L210,100 L280,120 L340,110 L360,108 L355,115 L350,135 Q365,120 370,100 Q372,90 368,85 Q362,78 370,72 M350,135 L335,150 L290,155 L250,160 L190,165 L140,155 L110,135 L90,110 L80,88 L78,65 L76,52 L82,60 L78,30"
+    stroke="#c9a84c"
+    stroke-width="1.5"
+    fill="none"
+    opacity="0"
+  />
 </svg>
