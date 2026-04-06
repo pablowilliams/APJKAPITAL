@@ -17,40 +17,36 @@ const team = [
 function PhotoFallback({ initials }: { initials: string }) {
   return (
     <div className="w-full aspect-[4/5] rounded-2xl bg-dark-surface border border-dark-border flex items-center justify-center">
-      <span className="text-[32px] font-display font-semibold text-gold/15">{initials}</span>
+      <span className="text-[40px] font-display font-semibold text-gold/15">{initials}</span>
     </div>
   )
 }
 
 export default function TeamContent() {
   return (
-    <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-8 md:gap-10">
+    <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-10">
       {team.map((m, i) => {
         const [imgErr, setImgErr] = useState(false)
         return (
           <motion.div key={m.name} {...f(0.05 + i * 0.08)} className="group">
-            <div className="mb-7">
-              {imgErr ? (
-                <PhotoFallback initials={m.initials} />
-              ) : (
-                <img
-                  src={m.photo} alt={m.name}
+            <div className="mb-8">
+              {imgErr ? <PhotoFallback initials={m.initials} /> : (
+                <img src={m.photo} alt={m.name}
                   className="w-full aspect-[4/5] rounded-2xl object-cover bg-dark-surface border border-dark-border transition-all duration-300 group-hover:border-gold/12 group-hover:shadow-[0_8px_40px_rgba(0,0,0,0.4)]"
-                  loading="lazy"
-                  onError={() => setImgErr(true)}
+                  loading="lazy" onError={() => setImgErr(true)}
                 />
               )}
             </div>
-            <h3 className="text-[16px] font-display font-semibold text-white/85 group-hover:text-gold transition-colors duration-200 mb-1">{m.name}</h3>
+            <h3 className="text-[20px] font-display font-semibold text-white/85 group-hover:text-gold transition-colors duration-200 mb-2">{m.name}</h3>
             <p className="label mb-1">{m.role}</p>
-            <p className="text-[11px] text-zinc-700 mb-5">{m.location}</p>
-            <p className="text-[13px] text-zinc-500 leading-[1.85] mb-7">{m.bio}</p>
-            <div className="flex flex-col gap-2 pt-5 border-t border-dark-border">
-              <a href={`mailto:${m.email}`} className="inline-flex items-center gap-2 text-[12px] text-zinc-600 hover:text-gold transition-colors">
-                <Mail size={11} className="text-gold/20" /> {m.email}
+            <p className="text-[13px] text-zinc-700 mb-6">{m.location}</p>
+            <p className="text-[15px] text-zinc-500 leading-[1.8] mb-8">{m.bio}</p>
+            <div className="flex flex-col gap-3 pt-6 border-t border-dark-border">
+              <a href={`mailto:${m.email}`} className="inline-flex items-center gap-2.5 text-[14px] text-zinc-600 hover:text-gold transition-colors">
+                <Mail size={14} className="text-gold/20" /> {m.email}
               </a>
-              <a href={m.linkedin} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 text-[12px] text-zinc-600 hover:text-gold transition-colors">
-                <Link2 size={11} className="text-gold/20" /> LinkedIn
+              <a href={m.linkedin} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2.5 text-[14px] text-zinc-600 hover:text-gold transition-colors">
+                <Link2 size={14} className="text-gold/20" /> LinkedIn
               </a>
             </div>
           </motion.div>

@@ -15,15 +15,15 @@ const insights = [
 
 export default function InsightsContent() {
   return (
-    <div className="grid md:grid-cols-2 gap-6">
+    <div className="grid md:grid-cols-2 gap-8">
       {insights.map((item, i) => (
-        <motion.div key={item.title} {...f(0.05 + i * 0.07)} className="card p-8">
-          <div className="flex items-center gap-3 mb-5">
-            <div className="w-2 h-2 rounded-full bg-purple-400/50" />
-            <span className="text-[11px] text-zinc-600 tracking-[0.08em]">{item.date}</span>
+        <motion.div key={item.title} {...f(0.05 + i * 0.07)} className="card">
+          <div className="flex items-center gap-3 mb-6">
+            <div className="w-2.5 h-2.5 rounded-full bg-purple-400/50" />
+            <span className="text-[13px] text-zinc-600 tracking-[0.06em]">{item.date}</span>
           </div>
-          <h3 className="text-[16px] font-display font-semibold text-white/85 mb-4">{item.title}</h3>
-          <p className="text-[14px] text-zinc-500 leading-[1.85]">{item.text}</p>
+          <h3 className="text-[20px] font-display font-semibold text-white/85 mb-5">{item.title}</h3>
+          <p className="text-[16px] text-zinc-500 leading-[1.8]">{item.text}</p>
         </motion.div>
       ))}
     </div>

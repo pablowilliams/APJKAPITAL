@@ -37,11 +37,9 @@ function App() {
   const [loading, setLoading] = useState(true)
   const [activeSection, setActiveSection] = useState<SectionId>('about')
 
-  // Hash-based routing (#72, #74)
   useEffect(() => {
     const hash = window.location.hash.slice(1) as SectionId
     if (hash && sections.some((s) => s.id === hash)) setActiveSection(hash)
-
     const onPop = () => {
       const h = window.location.hash.slice(1) as SectionId
       if (h && sections.some((s) => s.id === h)) setActiveSection(h)
@@ -71,36 +69,33 @@ function App() {
           <Navbar activeSection={activeSection} onNavigate={navigateTo} />
           <HeroIntro onCTA={() => navigateTo('about')} />
 
-          {/* Main content panel */}
-          <div id="main-content" className="px-6 md:px-12 lg:px-20 py-32 max-w-[1400px] mx-auto">
+          <div id="main-content" className="px-8 sm:px-12 md:px-16 lg:px-24 py-32 lg:py-40 max-w-[1400px] mx-auto">
             {/* Section indicator */}
             <AnimatePresence mode="wait">
               <motion.div
-                key={`indicator-${activeSection}`}
+                key={`ind-${activeSection}`}
                 initial={{ opacity: 0, x: -12 }}
                 animate={{ opacity: 1, x: 0 }}
                 exit={{ opacity: 0, x: 12 }}
                 transition={{ duration: 0.4 }}
-                className="mb-20 flex items-center gap-6"
+                className="mb-16 flex items-center gap-6"
               >
                 <motion.img
-                  src="/bull.png"
-                  alt=""
-                  className="h-12 w-auto will-change-transform"
+                  src="/bull.png" alt=""
+                  className="h-14 w-auto will-change-transform"
                   animate={{ x: [0, 4, 0] }}
                   transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut' }}
                 />
                 <div>
-                  <p className="label mb-1.5">{activeLabel}</p>
+                  <p className="label mb-2">{activeLabel}</p>
                   <div className="w-12 h-[1px] bg-gold/20" />
                 </div>
               </motion.div>
             </AnimatePresence>
 
-            {/* Content */}
             <AnimatePresence mode="wait">
               <motion.div
-                key={`section-${activeSection}`}
+                key={`content-${activeSection}`}
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -12 }}
@@ -111,16 +106,13 @@ function App() {
             </AnimatePresence>
           </div>
 
-          {/* Footer */}
-          <footer className="px-6 md:px-12 lg:px-20 py-16 border-t border-dark-border max-w-[1400px] mx-auto">
+          <footer className="px-8 sm:px-12 md:px-16 lg:px-24 py-20 border-t border-dark-border max-w-[1400px] mx-auto">
             <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6">
               <div className="flex items-center gap-3">
-                <img src="/bull.png" alt="" className="h-6 w-auto opacity-40" />
-                <span className="text-[12px] text-zinc-700 tracking-[0.1em]">APJ KAPITAL</span>
+                <img src="/bull.png" alt="" className="h-7 w-auto opacity-30" />
+                <span className="text-[13px] text-zinc-700 tracking-[0.1em]">APJ KAPITAL</span>
               </div>
-              <p className="text-[11px] text-zinc-800">
-                &copy; {new Date().getFullYear()} APJ Kapital. All rights reserved. Not investment advice.
-              </p>
+              <p className="text-[13px] text-zinc-800">&copy; {new Date().getFullYear()} APJ Kapital. All rights reserved.</p>
             </div>
           </footer>
         </>

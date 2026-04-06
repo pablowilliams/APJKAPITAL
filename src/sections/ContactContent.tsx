@@ -15,46 +15,43 @@ const contacts = [
 
 export default function ContactContent() {
   return (
-    <div className="grid lg:grid-cols-[1fr_1fr] gap-20">
-      {/* Left */}
+    <div className="grid lg:grid-cols-2 gap-20 lg:gap-28">
       <motion.div {...f(0.05)}>
-        <p className="text-[15px] text-zinc-400 leading-[1.9] mb-14">
+        <p className="text-[17px] text-zinc-400 leading-[1.85] mb-16 max-w-[480px]">
           Whether you're exploring investment opportunities, seeking advisory
           services, or simply curious — reach out directly.
         </p>
-
-        <div className="space-y-8">
-          <div className="flex items-start gap-4">
-            <Mail size={16} className="text-gold/30 mt-1 shrink-0" />
+        <div className="space-y-10">
+          <div className="flex items-start gap-5">
+            <Mail size={20} className="text-gold/30 mt-1 shrink-0" />
             <div>
               <p className="label mb-2">General</p>
-              <a href="mailto:info@apjkapital.com" className="text-[15px] text-zinc-300 hover:text-gold transition-colors">info@apjkapital.com</a>
+              <a href="mailto:info@apjkapital.com" className="text-[18px] text-zinc-300 hover:text-gold transition-colors">info@apjkapital.com</a>
             </div>
           </div>
-          <div className="flex items-start gap-4">
-            <MapPin size={16} className="text-gold/30 mt-1 shrink-0" />
+          <div className="flex items-start gap-5">
+            <MapPin size={20} className="text-gold/30 mt-1 shrink-0" />
             <div>
               <p className="label mb-2">Locations</p>
-              <p className="text-[15px] text-zinc-300">Milan, Italy &middot; London, UK</p>
+              <p className="text-[18px] text-zinc-300">Milan, Italy &middot; London, UK</p>
             </div>
           </div>
         </div>
       </motion.div>
 
-      {/* Right */}
       <motion.div {...f(0.15)} className="space-y-0 divide-y divide-dark-border">
         {contacts.map((c) => (
-          <div key={c.name} className="flex items-center justify-between py-7 first:pt-0 last:pb-0">
+          <div key={c.name} className="flex items-center justify-between py-8 first:pt-0 last:pb-0">
             <div>
-              <h4 className="text-[15px] font-display font-semibold text-white/85">{c.name}</h4>
-              <p className="label mt-1">{c.role}</p>
+              <h4 className="text-[18px] font-display font-semibold text-white/85">{c.name}</h4>
+              <p className="label mt-1.5">{c.role}</p>
             </div>
-            <div className="flex items-center gap-4">
-              <a href={`mailto:${c.email}`} className="text-zinc-600 hover:text-gold transition-colors p-2 rounded-lg hover:bg-gold/[0.04]" aria-label={`Email ${c.name}`}>
-                <Mail size={15} />
+            <div className="flex items-center gap-5">
+              <a href={`mailto:${c.email}`} className="text-zinc-600 hover:text-gold transition-colors p-2.5 rounded-xl hover:bg-gold/[0.04]" aria-label={`Email ${c.name}`}>
+                <Mail size={18} />
               </a>
-              <a href={c.linkedin} target="_blank" rel="noopener noreferrer" className="text-zinc-600 hover:text-gold transition-colors p-2 rounded-lg hover:bg-gold/[0.04]" aria-label={`${c.name} LinkedIn`}>
-                <Link2 size={15} />
+              <a href={c.linkedin} target="_blank" rel="noopener noreferrer" className="text-zinc-600 hover:text-gold transition-colors p-2.5 rounded-xl hover:bg-gold/[0.04]" aria-label={`${c.name} LinkedIn`}>
+                <Link2 size={18} />
               </a>
             </div>
           </div>

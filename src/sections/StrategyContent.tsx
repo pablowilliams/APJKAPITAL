@@ -15,21 +15,21 @@ const strategies = [
 
 export default function StrategyContent() {
   return (
-    <div className="grid md:grid-cols-2 gap-6">
+    <div className="grid md:grid-cols-2 gap-8">
       {strategies.map((s, i) => (
-        <motion.div key={s.id} {...f(0.05 + i * 0.07)} className="card p-8 flex flex-col">
-          <div className="flex items-baseline gap-3 mb-5">
-            <span className="text-[10px] text-gold/20 font-mono font-medium">{s.id}</span>
+        <motion.div key={s.id} {...f(0.05 + i * 0.07)} className="card flex flex-col">
+          <div className="flex items-baseline gap-4 mb-6">
+            <span className="text-[12px] text-gold/25 font-mono font-medium">{s.id}</span>
             <div>
-              <h3 className="text-[16px] font-display font-semibold text-white/85 mb-1">{s.name}</h3>
-              <span className="text-[10px] text-zinc-600 tracking-[0.18em] uppercase">{s.tag}</span>
+              <h3 className="text-[20px] font-display font-semibold text-white/85 mb-1.5">{s.name}</h3>
+              <span className="text-[12px] text-zinc-600 tracking-[0.15em] uppercase">{s.tag}</span>
             </div>
           </div>
-          <p className="text-[14px] text-zinc-500 leading-[1.85] mb-7 flex-1">{s.text}</p>
-          <div className="grid grid-cols-2 gap-2.5 pt-6 border-t border-dark-border">
+          <p className="text-[16px] text-zinc-500 leading-[1.8] mb-8 flex-1">{s.text}</p>
+          <div className="grid grid-cols-2 gap-3 pt-7 border-t border-dark-border">
             {s.points.map((p) => (
-              <span key={p} className="text-[12px] text-zinc-600 flex items-center gap-2">
-                <span className="w-1 h-1 rounded-full bg-gold/25" /> {p}
+              <span key={p} className="text-[14px] text-zinc-600 flex items-center gap-3">
+                <span className="w-1.5 h-1.5 rounded-full bg-gold/25" /> {p}
               </span>
             ))}
           </div>
