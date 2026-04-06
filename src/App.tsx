@@ -23,44 +23,45 @@ export const sections: { id: SectionId; label: string }[] = [
   { id: 'contact', label: 'Contact' },
 ]
 
-const sectionThemes: Record<SectionId, { accent: string; label: string }> = {
-  about:    { accent: '#c9a84c', label: 'The bull stands tall.' },
-  strategy: { accent: '#3b82f6', label: 'The bull charges forward.' },
-  insights: { accent: '#a855f7', label: 'The bull surveys the horizon.' },
-  ventures: { accent: '#22c55e', label: 'The bull explores new ground.' },
-  team:     { accent: '#f59e0b', label: 'The bull leads the herd.' },
-  research: { accent: '#ef4444', label: 'The bull reads the market.' },
-  contact:  { accent: '#06b6d4', label: 'The bull approaches.' },
+const contentMap: Record<SectionId, () => React.ReactNode> = {
+  about: () => <AboutContent />,
+  strategy: () => <StrategyContent />,
+  team: () => <TeamContent />,
+  contact: () => <ContactContent />,
+  research: () => <ResearchContent />,
+  insights: () => <InsightsContent />,
+  ventures: () => <VenturesContent />,
 }
 
 function App() {
   const [loading, setLoading] = useState(true)
   const [activeSection, setActiveSection] = useState<SectionId>('about')
 
-  const navigateTo = useCallback((id: SectionId) => {
-    setActiveSection(id)
+  // Hash-based routing (#72, #74)
+  useEffect(() => {
+    const hash = window.location.hash.slice(1) as SectionId
+    if (hash && sections.some((s) => s.id === hash)) setActiveSection(hash)
+
+    const onPop = () => {
+      const h = window.location.hash.slice(1) as SectionId
+      if (h && sections.some((s) => s.id === h)) setActiveSection(h)
+    }
+    window.addEventListener('popstate', onPop)
+    return () => window.removeEventListener('popstate', onPop)
   }, [])
 
-  // Open About by default after loading
-  useEffect(() => {
-    if (!loading) setActiveSection('about')
-  }, [loading])
+  const navigateTo = useCallback((id: SectionId) => {
+    setActiveSection(id)
+    window.history.pushState(null, '', `#${id}`)
+    setTimeout(() => {
+      document.getElementById('main-content')?.scrollIntoView({ behavior: 'smooth', block: 'start' })
+    }, 80)
+  }, [])
 
-  const contentMap: Record<SectionId, React.ReactNode> = {
-    about: <AboutContent />,
-    strategy: <StrategyContent />,
-    team: <TeamContent />,
-    contact: <ContactContent />,
-    research: <ResearchContent />,
-    insights: <InsightsContent />,
-    ventures: <VenturesContent />,
-  }
-
-  const theme = sectionThemes[activeSection]
   const activeLabel = sections.find((s) => s.id === activeSection)?.label ?? ''
 
   return (
-    <div className="min-h-screen bg-[#050506]">
+    <div className="min-h-screen bg-dark">
       <AnimatePresence>
         {loading && <LoadingScreen onComplete={() => setLoading(false)} />}
       </AnimatePresence>
@@ -68,59 +69,60 @@ function App() {
       {!loading && (
         <>
           <Navbar activeSection={activeSection} onNavigate={navigateTo} />
-          <HeroIntro onCTA={() => {
-            navigateTo('about')
-            document.getElementById('content-panel')?.scrollIntoView({ behavior: 'smooth' })
-          }} />
+          <HeroIntro onCTA={() => navigateTo('about')} />
 
-          {/* Single content panel — shows the active section */}
-          <div id="content-panel" className="px-6 md:px-16 lg:px-24 py-24 max-w-[1400px] mx-auto">
-            {/* Section header with bull animation */}
+          {/* Main content panel */}
+          <div id="main-content" className="px-6 md:px-12 lg:px-20 py-32 max-w-[1400px] mx-auto">
+            {/* Section indicator */}
             <AnimatePresence mode="wait">
               <motion.div
-                key={`header-${activeSection}`}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -20 }}
-                transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
-                className="mb-16 flex items-center gap-6"
+                key={`indicator-${activeSection}`}
+                initial={{ opacity: 0, x: -12 }}
+                animate={{ opacity: 1, x: 0 }}
+                exit={{ opacity: 0, x: 12 }}
+                transition={{ duration: 0.4 }}
+                className="mb-20 flex items-center gap-6"
               >
                 <motion.img
                   src="/bull.png"
                   alt=""
-                  className="h-14 w-auto"
-                  style={{ filter: `drop-shadow(0 0 12px ${theme.accent}40)` }}
-                  animate={{
-                    x: [0, 6, 0],
-                    scale: [1, 1.04, 1],
-                  }}
-                  transition={{ duration: 3, repeat: Infinity, ease: 'easeInOut' }}
+                  className="h-12 w-auto will-change-transform"
+                  animate={{ x: [0, 4, 0] }}
+                  transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut' }}
                 />
                 <div>
-                  <p
-                    className="text-[11px] tracking-[0.3em] uppercase mb-2"
-                    style={{ color: `${theme.accent}90` }}
-                  >
-                    {activeLabel}
-                  </p>
-                  <p className="text-[13px] text-zinc-600 italic">{theme.label}</p>
+                  <p className="label mb-1.5">{activeLabel}</p>
+                  <div className="w-12 h-[1px] bg-gold/20" />
                 </div>
               </motion.div>
             </AnimatePresence>
 
-            {/* Section content */}
+            {/* Content */}
             <AnimatePresence mode="wait">
               <motion.div
-                key={`content-${activeSection}`}
-                initial={{ opacity: 0, y: 24 }}
+                key={`section-${activeSection}`}
+                initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -16 }}
-                transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+                exit={{ opacity: 0, y: -12 }}
+                transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
               >
-                {contentMap[activeSection]}
+                {contentMap[activeSection]()}
               </motion.div>
             </AnimatePresence>
           </div>
+
+          {/* Footer */}
+          <footer className="px-6 md:px-12 lg:px-20 py-16 border-t border-dark-border max-w-[1400px] mx-auto">
+            <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6">
+              <div className="flex items-center gap-3">
+                <img src="/bull.png" alt="" className="h-6 w-auto opacity-40" />
+                <span className="text-[12px] text-zinc-700 tracking-[0.1em]">APJ KAPITAL</span>
+              </div>
+              <p className="text-[11px] text-zinc-800">
+                &copy; {new Date().getFullYear()} APJ Kapital. All rights reserved. Not investment advice.
+              </p>
+            </div>
+          </footer>
         </>
       )}
     </div>

@@ -7,9 +7,10 @@
   --color-gold-light: #e0c97f;
   --color-gold-dark: #a08030;
   --color-dark: #050506;
-  --color-dark-card: #0b0b0d;
-  --color-dark-border: #1a1a1f;
-  --color-dark-surface: #0e0e11;
+  --color-dark-card: #0a0a0e;
+  --color-dark-border: #1a1a20;
+  --color-dark-surface: #0d0d11;
+  --color-dark-elevated: #111115;
 }
 
 *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
@@ -26,14 +27,54 @@ body {
   line-height: 1.75;
 }
 
-::selection { background: rgba(201,168,76,0.2); color: #fff; }
-::-webkit-scrollbar { width: 0px; }
+/* Consistent typography scale */
+h1 { font-family: var(--font-display); letter-spacing: -0.035em; line-height: 1.05; }
+h2 { font-family: var(--font-display); letter-spacing: -0.025em; line-height: 1.15; }
+h3 { font-family: var(--font-display); letter-spacing: -0.015em; line-height: 1.25; }
+p { line-height: 1.85; }
+strong { color: #e4e4e7; }
 
-h1, h2, h3, h4 {
-  letter-spacing: -0.025em;
-  font-family: var(--font-display);
-  line-height: 1.15;
+::selection { background: rgba(201,168,76,0.2); color: #fff; }
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: #222; border-radius: 2px; }
+
+/* Consistent label style */
+.label {
+  font-size: 11px;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: rgba(201,168,76,0.5);
 }
 
-p { line-height: 1.9; }
-strong { color: #e4e4e7; }
+/* Card elevation system */
+.card {
+  background: #0a0a0e;
+  border: 1px solid #1a1a20;
+  border-radius: 16px;
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
+.card:hover {
+  border-color: rgba(201,168,76,0.12);
+  box-shadow: 0 4px 40px rgba(0,0,0,0.3), 0 0 60px rgba(201,168,76,0.03);
+}
+
+/* Micro-interactions */
+button { cursor: pointer; }
+button:active { transform: scale(0.98); }
+a { transition: color 0.2s; }
+
+/* Skip to content (accessibility) */
+.skip-link {
+  position: absolute;
+  top: -100px;
+  left: 16px;
+  z-index: 999;
+  padding: 8px 16px;
+  background: #c9a84c;
+  color: #050506;
+  border-radius: 4px;
+  font-size: 14px;
+  font-weight: 600;
+}
+.skip-link:focus { top: 16px; }

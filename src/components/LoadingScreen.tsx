@@ -1,210 +1,70 @@
 import { motion } from 'framer-motion'
 import { useState, useEffect } from 'react'
 
-interface Props {
-  onComplete: () => void
-}
+interface Props { onComplete: () => void }
 
 export default function LoadingScreen({ onComplete }: Props) {
-  const [phase, setPhase] = useState<'outline' | 'fill' | 'done'>('outline')
+  const [phase, setPhase] = useState<'draw' | 'reveal' | 'done'>('draw')
 
   useEffect(() => {
-    const t1 = setTimeout(() => setPhase('fill'), 2600)
-    const t2 = setTimeout(() => setPhase('done'), 4200)
-    const t3 = setTimeout(() => onComplete(), 4700)
+    const t1 = setTimeout(() => setPhase('reveal'), 2400)
+    const t2 = setTimeout(() => setPhase('done'), 3800)
+    const t3 = setTimeout(onComplete, 4200)
     return () => { clearTimeout(t1); clearTimeout(t2); clearTimeout(t3) }
   }, [onComplete])
 
   if (phase === 'done') return null
 
-  /*
-    Outline traced from the new bull image (white/silver ornamental charging bull).
-    Image dimensions roughly 800x450, bull centred.
-    Tracing: tail-tip → back → hump → neck → head → horns → snout → chest →
-    front legs → belly → rear legs → tail base → back to tail-tip
-  */
-  const outline = `
-    M 80,195
-    C 60,180 48,160 55,140
-    C 60,125 72,130 78,140
-    C 82,148 75,160 80,195
-
-    M 80,195
-    C 90,185 100,175 115,170
-    L 140,165
-    L 165,158
-    L 190,150
-    C 210,142 230,130 255,118
-    C 275,108 295,98 315,92
-    C 340,85 360,82 380,80
-    C 400,78 420,80 440,88
-    C 455,94 468,105 478,118
-    L 490,135
-
-    C 498,142 510,148 525,150
-    C 540,150 555,145 568,135
-    C 578,128 585,118 590,112
-    L 598,108
-
-    C 610,100 622,96 635,100
-    C 645,104 650,112 648,122
-    L 640,130
-    C 630,135 618,136 608,132
-
-    M 598,108
-    C 605,95 615,85 628,82
-    C 640,80 648,86 645,95
-    C 640,92 632,90 625,94
-    L 615,100
-
-    M 608,132
-    C 598,138 588,148 580,160
-    C 572,175 565,188 558,200
-    L 548,215
-
-    C 540,228 530,248 525,268
-    C 522,282 518,298 515,315
-    C 514,325 508,332 498,335
-    C 490,336 484,330 485,320
-    L 490,300
-    C 494,280 498,260 505,242
-    L 515,220
-
-    C 505,225 492,228 478,230
-    L 450,232
-    L 415,230
-    C 395,228 375,225 360,222
-
-    L 348,235
-    C 340,255 332,278 328,300
-    C 326,315 320,328 310,332
-    C 302,335 296,328 298,318
-    L 305,295
-    C 310,272 318,250 325,232
-
-    L 310,228
-    C 290,225 268,222 248,220
-    L 220,218
-    L 195,218
-    L 170,220
-
-    C 160,232 148,252 140,275
-    C 135,292 128,310 122,325
-    C 118,332 112,336 104,334
-    C 96,330 95,322 98,312
-    L 108,280
-    C 115,258 122,238 132,222
-
-    L 128,218
-    C 118,222 108,228 100,238
-    C 92,250 85,268 80,288
-    C 76,305 70,320 62,328
-    C 55,332 48,328 50,318
-    L 58,295
-    C 65,270 75,248 88,230
-    L 100,218
-
-    C 95,210 88,202 82,198
-    L 80,195
-  `
+  // Path traced from the new silver/white ornamental bull — charging right, head down
+  // Contour follows: tail → back → hump → neck → head → horn → snout → jaw → chest → front legs → belly → rear legs → back to tail
+  const outline = "M 72,210 C 58,195 50,172 56,152 C 60,138 70,135 75,145 C 70,155 68,175 72,195 L 80,210 C 92,195 108,182 128,175 L 158,168 L 195,160 L 235,148 C 260,138 285,125 310,112 C 340,100 368,92 395,88 C 418,85 438,88 455,98 L 475,112 C 488,122 502,128 520,130 C 535,130 552,122 565,110 L 580,96 C 590,88 602,85 615,90 C 622,94 625,102 620,110 L 610,118 C 600,122 588,120 580,115 L 575,120 C 565,135 555,152 545,168 L 535,182 C 528,198 522,218 518,240 L 512,268 C 510,280 504,288 494,290 C 486,290 482,282 485,272 L 492,245 C 498,222 505,200 515,182 L 505,188 C 490,195 472,198 450,200 L 418,200 C 398,198 378,195 360,190 L 345,200 C 338,222 330,248 325,272 C 322,285 316,292 306,294 C 298,294 294,286 298,275 L 308,248 C 315,225 322,205 330,190 L 315,192 C 295,192 272,190 250,188 L 218,188 L 190,190 C 178,202 165,222 155,248 L 142,280 C 138,290 130,296 120,294 C 112,292 110,284 115,274 L 130,240 C 140,218 150,200 162,188 L 150,192 C 138,200 125,215 115,235 C 108,252 100,272 92,288 C 86,296 78,298 70,294 C 64,290 65,280 70,270 L 85,238 C 95,218 108,200 120,188 L 108,195 C 98,202 90,208 82,212 L 72,210"
 
   return (
     <motion.div
       className="fixed inset-0 z-[200] bg-[#050506] flex flex-col items-center justify-center"
       exit={{ opacity: 0 }}
-      transition={{ duration: 0.5 }}
+      transition={{ duration: 0.4 }}
     >
-      {/* Bull container */}
-      <div className="relative w-[340px] md:w-[460px] lg:w-[540px]">
-        {/* The actual bull image — hidden initially, revealed after outline */}
-        <img
-          src="/bull.png"
-          alt="APJ Kapital"
-          className="w-full h-auto block invisible"
-          aria-hidden
-        />
-        <motion.img
-          src="/bull.png"
-          alt="APJ Kapital"
-          className="absolute inset-0 w-full h-auto"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: phase === 'fill' ? 1 : 0 }}
-          transition={{ duration: 1.4, ease: 'easeOut' }}
-        />
+      <div className="relative w-[300px] sm:w-[380px] md:w-[460px]">
+        {/* Invisible sizing image */}
+        <img src="/bull.png" alt="" className="w-full h-auto invisible" aria-hidden="true" />
 
-        {/* SVG outline overlay — exactly matches image dimensions */}
-        <svg
-          viewBox="0 0 700 450"
-          className="absolute inset-0 w-full h-full pointer-events-none"
-          preserveAspectRatio="xMidYMid meet"
-        >
-          {/* Main outline — gold stroke drawing in */}
-          <motion.path
-            d={outline}
-            stroke="#c9a84c"
-            strokeWidth="2"
-            fill="none"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            initial={{ pathLength: 0, opacity: 1 }}
-            animate={{ pathLength: 1 }}
-            transition={{ duration: 2.4, ease: [0.4, 0, 0.2, 1] }}
+        {/* SVG outline — draws over the bull shape */}
+        <svg viewBox="0 0 700 400" className="absolute inset-0 w-full h-full" preserveAspectRatio="xMidYMid meet">
+          {/* Glow layer */}
+          <motion.path d={outline} stroke="#c9a84c" strokeWidth="6" fill="none" strokeLinecap="round" strokeLinejoin="round" opacity={0.15}
+            initial={{ pathLength: 0 }} animate={{ pathLength: 1 }}
+            transition={{ duration: 2.2, ease: [0.4, 0, 0.2, 1] }}
+            style={{ filter: 'blur(8px)' }}
           />
-          {/* Glow behind */}
-          <motion.path
-            d={outline}
-            stroke="#e0c97f"
-            strokeWidth="8"
-            fill="none"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            opacity={0.2}
-            initial={{ pathLength: 0 }}
-            animate={{ pathLength: 1 }}
-            transition={{ duration: 2.4, ease: [0.4, 0, 0.2, 1] }}
-            style={{ filter: 'blur(6px)' }}
+          {/* Main gold stroke */}
+          <motion.path d={outline} stroke="#c9a84c" strokeWidth="2" fill="none" strokeLinecap="round" strokeLinejoin="round"
+            initial={{ pathLength: 0, opacity: 1 }} animate={{ pathLength: 1 }}
+            transition={{ duration: 2.2, ease: [0.4, 0, 0.2, 1] }}
           />
-          {/* Bright leading edge */}
-          <motion.path
-            d={outline}
-            stroke="#ffffff"
-            strokeWidth="1"
-            fill="none"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            opacity={0.4}
-            initial={{ pathLength: 0 }}
-            animate={{ pathLength: 1 }}
-            transition={{ duration: 2.4, ease: [0.4, 0, 0.2, 1] }}
+          {/* White highlight */}
+          <motion.path d={outline} stroke="#ffffff" strokeWidth="0.8" fill="none" strokeLinecap="round" strokeLinejoin="round" opacity={0.3}
+            initial={{ pathLength: 0 }} animate={{ pathLength: 1 }}
+            transition={{ duration: 2.2, ease: [0.4, 0, 0.2, 1] }}
           />
         </svg>
+
+        {/* Actual bull — fades in on top */}
+        <motion.img src="/bull.png" alt="APJ Kapital" className="absolute inset-0 w-full h-auto"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: phase === 'reveal' ? 1 : 0 }}
+          transition={{ duration: 1.2, ease: 'easeOut' }}
+        />
       </div>
 
-      {/* Text and progress */}
-      <motion.div
-        className="mt-14 flex flex-col items-center gap-5"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 0.3 }}
-      >
-        <span className="text-white font-display font-semibold text-[18px] tracking-[0.18em]">
-          APJ KAPITAL
-        </span>
-        <div className="w-48 h-[2px] bg-zinc-900 rounded-full overflow-hidden">
-          <motion.div
-            className="h-full bg-gradient-to-r from-gold-dark via-gold to-gold-light rounded-full"
-            initial={{ width: '0%' }}
-            animate={{ width: '100%' }}
-            transition={{ duration: 4, ease: [0.4, 0, 0.2, 1] }}
+      <motion.div className="mt-14 flex flex-col items-center gap-5" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.3 }}>
+        <span className="text-white/90 font-display font-semibold text-[17px] tracking-[0.18em]">APJ KAPITAL</span>
+        <div className="w-44 h-[1.5px] bg-zinc-900 rounded-full overflow-hidden">
+          <motion.div className="h-full bg-gradient-to-r from-gold-dark via-gold to-gold-light rounded-full"
+            initial={{ width: '0%' }} animate={{ width: '100%' }}
+            transition={{ duration: 3.8, ease: [0.4, 0, 0.2, 1] }}
           />
         </div>
-        <motion.span
-          className="text-[10px] text-zinc-700 tracking-[0.3em] uppercase"
-          animate={{ opacity: [0.3, 0.8, 0.3] }}
-          transition={{ duration: 2, repeat: Infinity }}
-        >
-          Loading
-        </motion.span>
       </motion.div>
     </motion.div>
   )

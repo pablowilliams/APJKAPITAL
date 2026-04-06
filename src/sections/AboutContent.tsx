@@ -2,9 +2,9 @@ import { motion } from 'framer-motion'
 import { TrendingUp, Shield, BarChart3, Globe } from 'lucide-react'
 
 const f = (d: number) => ({
-  initial: { opacity: 0, y: 14 },
+  initial: { opacity: 0, y: 16 },
   animate: { opacity: 1, y: 0 },
-  transition: { duration: 0.6, delay: d },
+  transition: { duration: 0.6, delay: d, ease: [0.22, 1, 0.36, 1] },
 })
 
 const pillars = [
@@ -16,10 +16,10 @@ const pillars = [
 
 export default function AboutContent() {
   return (
-    <div className="grid lg:grid-cols-2 gap-16 lg:gap-24">
-      {/* Left */}
+    <div className="grid lg:grid-cols-[1fr_380px] gap-20">
+      {/* Left — story */}
       <div>
-        <motion.div {...f(0.1)} className="space-y-8 text-[16px] text-zinc-400 leading-[2] mb-16">
+        <motion.div {...f(0.05)} className="space-y-8 text-[15px] text-zinc-400 leading-[1.9] mb-20">
           <p>
             APJ Kapital is a multi-asset investment and advisory firm founded
             by a family with deep roots in the financial markets. We combine
@@ -28,44 +28,49 @@ export default function AboutContent() {
           </p>
           <p>
             Our founding team brings over two decades of experience across the
-            world's leading capital markets — from structured derivative desks in
-            Milan to quantitative research labs in London.
+            world's leading capital markets — from structured derivative desks
+            in Milan to quantitative research labs in London.
+          </p>
+          <p>
+            The future of investment sits at the intersection of traditional
+            finance and technology. We don't just run models — we understand
+            the markets behind them.
           </p>
         </motion.div>
 
         {/* Mission */}
-        <motion.div {...f(0.25)} className="border-l-2 border-gold/25 pl-8">
-          <p className="text-gold/50 text-[11px] tracking-[0.25em] uppercase mb-5">Mission</p>
-          <p className="text-[19px] font-display font-medium leading-[1.6] text-white/80">
+        <motion.div {...f(0.2)} className="border-l-2 border-gold/20 pl-10 mb-20">
+          <p className="label mb-5">Mission</p>
+          <p className="text-[18px] md:text-[21px] font-display font-medium leading-[1.55] text-white/80">
             "To deliver institutional-quality investment solutions with the
             agility of a family office."
           </p>
         </motion.div>
-      </div>
 
-      {/* Right — pillars */}
-      <div className="space-y-8">
-        {pillars.map((p, i) => (
-          <motion.div key={p.title} {...f(0.15 + i * 0.08)} className="flex gap-5">
-            <div className="w-11 h-11 rounded-lg bg-gold/[0.06] flex items-center justify-center shrink-0 mt-0.5">
-              <p.icon size={18} className="text-gold/50" />
-            </div>
-            <div>
-              <h3 className="text-[16px] font-display font-semibold mb-2 text-white/85">{p.title}</h3>
-              <p className="text-[14px] text-zinc-500 leading-[1.85]">{p.text}</p>
-            </div>
-          </motion.div>
-        ))}
-
-        {/* Stats row */}
-        <motion.div {...f(0.5)} className="grid grid-cols-2 gap-8 pt-10 border-t border-dark-border mt-10">
-          {[{ v: '20+', l: 'Years' }, { v: 'Multi-Asset', l: 'Derivatives' }, { v: 'Global', l: 'Coverage' }, { v: 'Milan & London', l: 'Presence' }].map((s) => (
+        {/* Stats */}
+        <motion.div {...f(0.3)} className="grid grid-cols-2 gap-x-12 gap-y-10 pt-12 border-t border-dark-border">
+          {[{ v: '20+', l: 'Years Experience' }, { v: 'Multi-Asset', l: 'Derivatives Focus' }, { v: 'Global', l: 'Market Coverage' }, { v: 'Milan & London', l: 'Presence' }].map((s) => (
             <div key={s.l}>
-              <div className="text-[18px] font-display font-semibold text-gold mb-1">{s.v}</div>
-              <div className="text-[11px] text-zinc-600 tracking-[0.1em] uppercase">{s.l}</div>
+              <div className="text-[20px] font-display font-semibold text-gold mb-1.5">{s.v}</div>
+              <div className="text-[11px] text-zinc-600 tracking-[0.12em] uppercase">{s.l}</div>
             </div>
           ))}
         </motion.div>
+      </div>
+
+      {/* Right — pillars */}
+      <div className="space-y-5">
+        {pillars.map((p, i) => (
+          <motion.div key={p.title} {...f(0.1 + i * 0.07)} className="card p-7">
+            <div className="flex items-center gap-4 mb-4">
+              <div className="w-10 h-10 rounded-lg bg-gold/[0.05] flex items-center justify-center">
+                <p.icon size={18} className="text-gold/50" />
+              </div>
+              <h3 className="text-[15px] font-display font-semibold text-white/85">{p.title}</h3>
+            </div>
+            <p className="text-[13px] text-zinc-500 leading-[1.8]">{p.text}</p>
+          </motion.div>
+        ))}
       </div>
     </div>
   )
