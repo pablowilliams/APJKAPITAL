@@ -77,14 +77,14 @@ function App() {
               <motion.div key={`hdr-${activeSection}`}
                 initial={{ opacity: 0, x: -10 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: 10 }}
                 transition={{ duration: 0.35, ease: EASE }}
-                className="mb-16 flex items-center gap-5"
+                className="mb-12 flex items-center gap-5"
               >
                 <motion.img src="/bull.png" alt="" className="h-12 w-auto will-change-transform opacity-80"
                   animate={{ x: [0, 3, 0] }} transition={{ duration: 5, repeat: Infinity, ease: 'easeInOut' }}
                 />
                 <div>
                   <p className="label mb-1">{activeLabel}</p>
-                  <div className="w-10 h-[1px] bg-gradient-to-r from-gold/30 to-transparent" />
+                  <div className="w-16 h-[1px] bg-gradient-to-r from-gold/30 to-transparent" />
                 </div>
               </motion.div>
             </AnimatePresence>

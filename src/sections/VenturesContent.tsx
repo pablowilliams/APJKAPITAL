@@ -18,7 +18,7 @@ export default function VenturesContent() {
             <div className={`w-3 h-3 rounded-full shadow-[0_0_6px] ${v.status === 'Active' ? 'bg-emerald-400/60 shadow-emerald-400/20' : 'bg-amber-400/60 shadow-amber-400/20'}`} />
           </div>
           <div className="flex-1 min-w-0">
-            <div className="flex flex-col sm:flex-row sm:items-baseline gap-1 sm:gap-4 mb-5">
+            <div className="flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-5 mb-5">
               <h3 className="text-[20px] font-display font-semibold text-white/85 group-hover:text-gold transition-colors duration-300">{v.name}</h3>
               <span className={`text-[12px] tracking-[0.12em] uppercase font-medium ${v.status === 'Active' ? 'text-emerald-400/60' : 'text-amber-400/60'}`}>{v.status}</span>
             </div>

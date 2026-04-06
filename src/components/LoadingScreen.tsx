@@ -7,9 +7,9 @@ export default function LoadingScreen({ onComplete }: Props) {
   const [phase, setPhase] = useState<'draw' | 'reveal' | 'done'>('draw')
 
   useEffect(() => {
-    const t1 = setTimeout(() => setPhase('reveal'), 2400)
-    const t2 = setTimeout(() => setPhase('done'), 3800)
-    const t3 = setTimeout(onComplete, 4200)
+    const t1 = setTimeout(() => setPhase('reveal'), 2000)
+    const t2 = setTimeout(() => setPhase('done'), 3400)
+    const t3 = setTimeout(onComplete, 3800)
     return () => { clearTimeout(t1); clearTimeout(t2); clearTimeout(t3) }
   }, [onComplete])
 
@@ -57,7 +57,7 @@ export default function LoadingScreen({ onComplete }: Props) {
         />
       </div>
 
-      <motion.div className="mt-14 flex flex-col items-center gap-5" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.3 }}>
+      <motion.div className="mt-14 flex flex-col items-center gap-5" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.2 }}>
         <span className="text-white/90 font-display font-semibold text-[17px] tracking-[0.18em]">APJ KAPITAL</span>
         <div className="w-44 h-[1.5px] bg-zinc-900 rounded-full overflow-hidden">
           <motion.div className="h-full bg-gradient-to-r from-gold-dark via-gold to-gold-light rounded-full"

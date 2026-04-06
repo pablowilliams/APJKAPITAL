@@ -33,7 +33,7 @@ export default function TeamContent() {
             <h3 className="text-[20px] font-display font-semibold text-white/85 group-hover:text-gold transition-colors duration-250 mb-2">{m.name}</h3>
             <p className="label mb-1">{m.role}</p>
             <p className="text-[12px] text-zinc-600 mb-6">{m.location}</p>
-            <p className="text-[15px] text-zinc-400 leading-[1.8] mb-8 flex-1">{m.bio}</p>
+            <p className="text-[15px] text-zinc-400 leading-[1.8] mb-6 flex-1">{m.bio}</p>
             <div className="flex flex-col gap-3 pt-6 border-t border-dark-border/60">
               <a href={`mailto:${m.email}`} className="inline-flex items-center gap-2.5 text-[14px] text-zinc-500 hover:text-gold transition-colors duration-200">
                 <Mail size={14} className="text-gold/25 group-hover:text-gold/50 transition-colors duration-200" /> {m.email}

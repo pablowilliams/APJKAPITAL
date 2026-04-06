@@ -54,7 +54,7 @@ function Content({ tab }: { tab: Tab }) {
     <motion.div {...anim}>
       <div className={`${chartH} mb-10`}>
         <ResponsiveContainer><AreaChart data={goldData}>
-          <defs><linearGradient id="gG" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stopColor="#c9a84c" stopOpacity={0.15}/><stop offset="100%" stopColor="#c9a84c" stopOpacity={0}/></linearGradient></defs>
+          <defs><linearGradient id="gG" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stopColor="#c9a84c" stopOpacity={0.22}/><stop offset="100%" stopColor="#c9a84c" stopOpacity={0}/></linearGradient></defs>
           <CartesianGrid stroke="#22222a" strokeDasharray="3 3"/><XAxis dataKey="d" tick={axisStyle} axisLine={false} tickLine={false}/><YAxis tick={axisStyle} axisLine={false} tickLine={false} domain={[4100,4800]}/><Tooltip content={<Tip/>}/>
           <Area type="monotone" dataKey="gold" stroke="#c9a84c" strokeWidth={2} fill="url(#gG)" name="Gold $/oz"/>
         </AreaChart></ResponsiveContainer>
@@ -94,9 +94,11 @@ function Content({ tab }: { tab: Tab }) {
   )
   return (
     <motion.div {...anim}>
-      <div className="space-y-6 text-[16px] text-zinc-400 leading-[1.85] max-w-[600px]">
+      <div className="space-y-5 max-w-[600px]">
         {[['Mon 7 Apr','ISM Services PMI; Fed\u2019s Waller speaks'],['Tue 8 Apr','JOLTS job openings; ECB minutes'],['Wed 9 Apr','FOMC minutes; 10Y auction'],['Thu 10 Apr','CPI (March); initial claims'],['Fri 11 Apr','PPI; UMich consumer sentiment']].map(([d,e]) => (
-          <p key={d}><strong className="text-zinc-200">{d}</strong> — {e}</p>
+          <div key={d} className="border-l-2 border-gold/15 pl-5 py-1">
+            <p className="text-[16px] text-zinc-400 leading-[1.85]"><strong className="text-zinc-200">{d}</strong> — {e}</p>
+          </div>
         ))}
       </div>
       <p className="text-[15px] text-zinc-500 leading-[1.85] mt-10 max-w-[560px]">All eyes on Thursday's CPI. Consensus +0.3% MoM core — any upside surprise cements "no cuts in 2026."</p>

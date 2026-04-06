@@ -10,7 +10,7 @@ export default function HeroIntro({ onCTA }: Props) {
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_25%_15%,_rgba(201,168,76,0.05)_0%,_transparent_50%)]" />
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_75%_80%,_rgba(201,168,76,0.03)_0%,_transparent_40%)]" />
 
-      <div className="relative z-10 w-full max-w-[1400px] mx-auto px-8 sm:px-12 md:px-16 lg:px-24 flex flex-col md:flex-row items-center gap-12 md:gap-16 lg:gap-12">
+      <div className="relative z-10 w-full max-w-[1400px] mx-auto px-8 sm:px-12 md:px-16 lg:px-24 flex flex-col md:flex-row items-center gap-16">
         <div className="flex-1 max-w-[600px]">
           <motion.p initial={{ opacity: 0, y: 14 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.1, ease }} className="label mb-8">
             Multi-Asset Investment & Advisory
@@ -33,7 +33,7 @@ export default function HeroIntro({ onCTA }: Props) {
             <button onClick={onCTA} className="px-8 py-4 bg-gradient-to-r from-gold to-gold-dark text-[#060608] font-semibold rounded-xl text-[16px] shadow-[0_4px_20px_rgba(201,168,76,0.15)] hover:shadow-[0_8px_40px_rgba(201,168,76,0.3)] hover:scale-[1.02] transition-all duration-300 active:scale-[0.97]">
               Discover More &rarr;
             </button>
-            <div className="flex items-center gap-3 text-[14px] text-zinc-500">
+            <div className="flex items-center gap-3 text-[15px] text-zinc-500 whitespace-nowrap">
               <div className="w-2 h-2 rounded-full bg-gold/50 shadow-[0_0_8px_rgba(201,168,76,0.3)] animate-pulse" />
               Milan &middot; London
             </div>

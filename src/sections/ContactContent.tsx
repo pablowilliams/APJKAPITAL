@@ -12,9 +12,9 @@ const contacts = [
 
 export default function ContactContent() {
   return (
-    <div className="grid md:grid-cols-2 gap-16 lg:gap-24">
+    <div className="grid md:grid-cols-2 gap-12 lg:gap-16">
       <motion.div {...f(0.05)}>
-        <p className="text-[17px] text-zinc-400 leading-[1.85] mb-14 max-w-[460px]">
+        <p className="text-[17px] text-zinc-400 leading-[1.85] mb-14 max-w-[520px]">
           Whether you're exploring investment opportunities, seeking advisory services, or simply curious — reach out directly.
         </p>
         <div className="space-y-8">
