@@ -1,31 +1,31 @@
-import { motion } from 'framer-motion'
-
-const ease = [0.16, 1, 0.3, 1]
-const f = (d: number) => ({ initial: { opacity: 0, y: 16 }, animate: { opacity: 1, y: 0 }, transition: { duration: 0.5, delay: d, ease } })
-
 const ventures = [
-  { name: 'Prediction Market Infrastructure', status: 'Active', text: 'Systematic strategies on political, sports, and weather prediction markets. NLP-powered sentiment extraction with automated position management.' },
-  { name: 'Crypto Market Making', status: 'Active', text: 'High-frequency market making across centralised and decentralised exchanges. Proprietary order flow toxicity models for real-time spread optimisation.' },
-  { name: 'Climate Risk Analytics', status: 'Development', text: 'Quantitative models for pricing climate-related financial risks. Next-generation ESG scoring frameworks in partnership with academic institutions.' },
+  { name: 'Prediction Market Infrastructure', status: 'Active', text: 'Building systematic strategies on political, sports, and weather prediction markets. NLP-powered sentiment extraction from live news flow with automated position management across multiple platforms.' },
+  { name: 'Crypto Market Making', status: 'Active', text: 'High-frequency market making across centralised and decentralised exchanges. Proprietary order flow toxicity models enable real-time spread optimisation and inventory management.' },
+  { name: 'Climate Risk Analytics', status: 'In Development', text: 'Quantitative models for pricing climate-related financial risks. Partnering with academic institutions to develop next-generation ESG scoring frameworks with measurable predictive power.' },
 ]
 
 export default function VenturesContent() {
   return (
-    <div className="space-y-6">
-      {ventures.map((v, i) => (
-        <motion.div key={v.name} {...f(0.05 + i * 0.06)} className="card group flex gap-6 md:gap-8 items-start cursor-default">
-          <div className="shrink-0 mt-2">
-            <div className={`w-3 h-3 rounded-full shadow-[0_0_6px] ${v.status === 'Active' ? 'bg-emerald-400/60 shadow-emerald-400/20' : 'bg-amber-400/60 shadow-amber-400/20'}`} />
-          </div>
-          <div className="flex-1 min-w-0">
-            <div className="flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-5 mb-5">
-              <h3 className="text-[20px] font-display font-semibold text-white/85 group-hover:text-gold transition-colors duration-300">{v.name}</h3>
-              <span className={`text-[12px] tracking-[0.12em] uppercase font-medium ${v.status === 'Active' ? 'text-emerald-400/60' : 'text-amber-400/60'}`}>{v.status}</span>
+    <div className="max-w-[720px]">
+      <h2 className="text-[28px] md:text-[36px] mb-6">Ventures</h2>
+      <p className="text-[16px] leading-[1.85] mb-16 max-w-[560px]">
+        Early-stage initiatives where we're applying our quantitative
+        capabilities to emerging opportunities.
+      </p>
+
+      <div className="space-y-0 divide-y divide-dark-border">
+        {ventures.map((v) => (
+          <div key={v.name} className="py-10 first:pt-0 last:pb-0">
+            <div className="flex items-center gap-4 mb-4">
+              <h3 className="text-[18px]">{v.name}</h3>
+              <span className={`text-[11px] uppercase tracking-wider px-2.5 py-1 rounded-full ${
+                v.status === 'Active' ? 'text-emerald-400/70 bg-emerald-400/5' : 'text-amber-400/70 bg-amber-400/5'
+              }`}>{v.status}</span>
             </div>
-            <p className="text-[16px] text-zinc-400 leading-[1.8]">{v.text}</p>
+            <p className="text-[15px] leading-[1.85]">{v.text}</p>
           </div>
-        </motion.div>
-      ))}
+        ))}
+      </div>
     </div>
   )
 }

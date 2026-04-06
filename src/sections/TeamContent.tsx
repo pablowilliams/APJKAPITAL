@@ -1,50 +1,50 @@
 import { useState } from 'react'
-import { motion } from 'framer-motion'
-import { Mail, Link2 } from 'lucide-react'
-
-const ease = [0.16, 1, 0.3, 1]
-const f = (d: number) => ({ initial: { opacity: 0, y: 16 }, animate: { opacity: 1, y: 0 }, transition: { duration: 0.5, delay: d, ease } })
 
 const team = [
-  { name: 'Guido Williams', role: 'Managing Partner', location: 'Milan', bio: 'Multi-asset derivative specialist. 20+ years across Milan & London. Imperial College Management School.', initials: 'GW', email: 'guido@apjkapital.com', linkedin: 'https://www.linkedin.com/in/guido-williams-a471a11/', photo: '/team/guido.jpg' },
-  { name: 'Andrea Williams', role: 'Partner & Head of Operations', location: 'London', bio: 'Firm operations, compliance, and client services. The operational backbone of APJ Kapital.', initials: 'AW', email: 'andrea@apjkapital.com', linkedin: 'https://www.linkedin.com/in/andreapbwilliams/', photo: '/team/andrea.jpg' },
-  { name: 'Pablo Williams', role: 'Data Scientist', location: 'London', bio: 'ML, market microstructure, systematic trading. MSc UCL. Builds the quantitative edge.', initials: 'PW', email: 'pablo@apjkapital.com', linkedin: 'https://www.linkedin.com/in/pablowilliams/', photo: '/team/pablo.jpg' },
+  { name: 'Guido Williams', role: 'Managing Partner', bio: 'Multi-asset derivative specialist with over two decades of experience in capital markets. Senior institutional roles across Milan and London spanning structured products, exotic derivatives, and cross-asset risk management. Imperial College Management School. Leads firm strategy, investment oversight, and key client relationships.', initials: 'GW', email: 'guido@apjkapital.com', linkedin: 'https://www.linkedin.com/in/guido-williams-a471a11/', photo: '/team/guido.jpg' },
+  { name: 'Andrea Williams', role: 'Partner & Head of Operations', bio: 'Extensive experience in business management and financial administration. Oversees firm operations, compliance, and client services — the operational backbone that enables the investment team to focus on performance.', initials: 'AW', email: 'andrea@apjkapital.com', linkedin: 'https://www.linkedin.com/in/andreapbwilliams/', photo: '/team/andrea.jpg' },
+  { name: 'Pablo Williams', role: 'Data Scientist', bio: 'MSc from University College London. Specialises in machine learning, market microstructure, and systematic trading systems. Designs the models, data pipelines, and infrastructure that power the firm\u2019s technology-driven strategies across crypto, equities, and prediction markets.', initials: 'PW', email: 'pablo@apjkapital.com', linkedin: 'https://www.linkedin.com/in/pablowilliams/', photo: '/team/pablo.jpg' },
 ]
 
 export default function TeamContent() {
   return (
-    <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 lg:gap-10">
-      {team.map((m, i) => {
-        const [imgErr, setImgErr] = useState(false)
-        return (
-          <motion.div key={m.name} {...f(0.05 + i * 0.06)} className="group">
-            <div className="mb-7">
-              {imgErr ? (
-                <div className="w-full aspect-[4/5] rounded-2xl bg-gradient-to-b from-dark-surface to-dark-card border border-dark-border/60 flex items-center justify-center shadow-[0_2px_20px_rgba(0,0,0,0.2)]">
-                  <span className="text-[40px] font-display font-semibold text-gold/12">{m.initials}</span>
-                </div>
-              ) : (
-                <img src={m.photo} alt={m.name}
-                  className="w-full aspect-[4/5] rounded-2xl object-cover bg-dark-surface border border-dark-border/60 shadow-[0_2px_20px_rgba(0,0,0,0.2)] transition-all duration-350 ease-out group-hover:border-gold/15 group-hover:shadow-[0_8px_40px_rgba(0,0,0,0.4)]"
-                  loading="lazy" onError={() => setImgErr(true)}
-                />
-              )}
+    <div>
+      <div className="max-w-[720px] mb-16">
+        <h2 className="text-[28px] md:text-[36px] mb-6">Team</h2>
+        <p className="text-[16px] leading-[1.85] max-w-[560px]">
+          A family-founded firm combining institutional experience with
+          entrepreneurial drive. We think in generations, not quarters.
+        </p>
+      </div>
+
+      <div className="grid md:grid-cols-3 gap-12 md:gap-16">
+        {team.map((m) => {
+          const [err, setErr] = useState(false)
+          return (
+            <div key={m.name}>
+              <div className="mb-6">
+                {err ? (
+                  <div className="w-full aspect-[3/4] rounded-lg bg-dark-surface flex items-center justify-center">
+                    <span className="text-[32px] font-display text-zinc-800">{m.initials}</span>
+                  </div>
+                ) : (
+                  <img src={m.photo} alt={m.name}
+                    className="w-full aspect-[3/4] rounded-lg object-cover bg-dark-surface"
+                    loading="lazy" onError={() => setErr(true)}
+                  />
+                )}
+              </div>
+              <h3 className="text-[17px] mb-1">{m.name}</h3>
+              <p className="text-[13px] text-gold/50 uppercase tracking-wider mb-5">{m.role}</p>
+              <p className="text-[14px] leading-[1.8] mb-6">{m.bio}</p>
+              <div className="space-y-1.5 text-[13px]">
+                <a href={`mailto:${m.email}`} className="block text-zinc-600 hover:text-gold transition-colors">{m.email}</a>
+                <a href={m.linkedin} target="_blank" rel="noopener noreferrer" className="block text-zinc-600 hover:text-gold transition-colors">LinkedIn &rarr;</a>
+              </div>
             </div>
-            <h3 className="text-[20px] font-display font-semibold text-white/85 group-hover:text-gold transition-colors duration-250 mb-2">{m.name}</h3>
-            <p className="label mb-1">{m.role}</p>
-            <p className="text-[12px] text-zinc-600 mb-6">{m.location}</p>
-            <p className="text-[15px] text-zinc-400 leading-[1.8] mb-6 flex-1">{m.bio}</p>
-            <div className="flex flex-col gap-3 pt-6 border-t border-dark-border/60">
-              <a href={`mailto:${m.email}`} className="inline-flex items-center gap-2.5 text-[14px] text-zinc-500 hover:text-gold transition-colors duration-200">
-                <Mail size={14} className="text-gold/25 group-hover:text-gold/50 transition-colors duration-200" /> {m.email}
-              </a>
-              <a href={m.linkedin} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2.5 text-[14px] text-zinc-500 hover:text-gold transition-colors duration-200">
-                <Link2 size={14} className="text-gold/25 group-hover:text-gold/50 transition-colors duration-200" /> LinkedIn
-              </a>
-            </div>
-          </motion.div>
-        )
-      })}
+          )
+        })}
+      </div>
     </div>
   )
 }
