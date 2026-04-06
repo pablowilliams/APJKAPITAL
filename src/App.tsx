@@ -23,7 +23,7 @@ export const sections: { id: SectionId; label: string }[] = [
   { id: 'contact', label: 'Contact' },
 ]
 
-const contentMap: Record<SectionId, () => React.ReactNode> = {
+const CONTENT: Record<SectionId, () => React.ReactNode> = {
   about: () => <AboutContent />,
   strategy: () => <StrategyContent />,
   team: () => <TeamContent />,
@@ -32,6 +32,8 @@ const contentMap: Record<SectionId, () => React.ReactNode> = {
   insights: () => <InsightsContent />,
   ventures: () => <VenturesContent />,
 }
+
+const EASE = [0.16, 1, 0.3, 1]
 
 function App() {
   const [loading, setLoading] = useState(true)
@@ -51,9 +53,9 @@ function App() {
   const navigateTo = useCallback((id: SectionId) => {
     setActiveSection(id)
     window.history.pushState(null, '', `#${id}`)
-    setTimeout(() => {
+    requestAnimationFrame(() => {
       document.getElementById('main-content')?.scrollIntoView({ behavior: 'smooth', block: 'start' })
-    }, 80)
+    })
   }, [])
 
   const activeLabel = sections.find((s) => s.id === activeSection)?.label ?? ''
@@ -69,50 +71,41 @@ function App() {
           <Navbar activeSection={activeSection} onNavigate={navigateTo} />
           <HeroIntro onCTA={() => navigateTo('about')} />
 
-          <div id="main-content" className="px-8 sm:px-12 md:px-16 lg:px-24 py-32 lg:py-40 max-w-[1400px] mx-auto">
-            {/* Section indicator */}
+          <div id="main-content" className="px-8 sm:px-12 md:px-16 lg:px-24 py-28 lg:py-36 max-w-[1400px] mx-auto">
+            {/* Section header */}
             <AnimatePresence mode="wait">
-              <motion.div
-                key={`ind-${activeSection}`}
-                initial={{ opacity: 0, x: -12 }}
-                animate={{ opacity: 1, x: 0 }}
-                exit={{ opacity: 0, x: 12 }}
-                transition={{ duration: 0.4 }}
-                className="mb-16 flex items-center gap-6"
+              <motion.div key={`hdr-${activeSection}`}
+                initial={{ opacity: 0, x: -10 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: 10 }}
+                transition={{ duration: 0.35, ease: EASE }}
+                className="mb-16 flex items-center gap-5"
               >
-                <motion.img
-                  src="/bull.png" alt=""
-                  className="h-14 w-auto will-change-transform"
-                  animate={{ x: [0, 4, 0] }}
-                  transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut' }}
+                <motion.img src="/bull.png" alt="" className="h-12 w-auto will-change-transform opacity-80"
+                  animate={{ x: [0, 3, 0] }} transition={{ duration: 5, repeat: Infinity, ease: 'easeInOut' }}
                 />
                 <div>
-                  <p className="label mb-2">{activeLabel}</p>
-                  <div className="w-12 h-[1px] bg-gold/20" />
+                  <p className="label mb-1">{activeLabel}</p>
+                  <div className="w-10 h-[1px] bg-gradient-to-r from-gold/30 to-transparent" />
                 </div>
               </motion.div>
             </AnimatePresence>
 
             <AnimatePresence mode="wait">
-              <motion.div
-                key={`content-${activeSection}`}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -12 }}
-                transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+              <motion.div key={`cnt-${activeSection}`}
+                initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -10 }}
+                transition={{ duration: 0.45, ease: EASE }}
               >
-                {contentMap[activeSection]()}
+                {CONTENT[activeSection]()}
               </motion.div>
             </AnimatePresence>
           </div>
 
-          <footer className="px-8 sm:px-12 md:px-16 lg:px-24 py-20 border-t border-dark-border max-w-[1400px] mx-auto">
-            <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6">
+          <footer className="px-8 sm:px-12 md:px-16 lg:px-24 py-16 border-t border-dark-border/60 max-w-[1400px] mx-auto">
+            <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
               <div className="flex items-center gap-3">
-                <img src="/bull.png" alt="" className="h-7 w-auto opacity-30" />
-                <span className="text-[13px] text-zinc-700 tracking-[0.1em]">APJ KAPITAL</span>
+                <img src="/bull.png" alt="" className="h-6 w-auto opacity-25" />
+                <span className="text-[12px] text-zinc-600 tracking-[0.1em]">APJ KAPITAL</span>
               </div>
-              <p className="text-[13px] text-zinc-800">&copy; {new Date().getFullYear()} APJ Kapital. All rights reserved.</p>
+              <p className="text-[12px] text-zinc-700">&copy; {new Date().getFullYear()} APJ Kapital. All rights reserved.</p>
             </div>
           </footer>
         </>

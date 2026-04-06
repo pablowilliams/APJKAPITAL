@@ -1,11 +1,8 @@
 import { motion } from 'framer-motion'
 import { Mail, MapPin, Link2 } from 'lucide-react'
 
-const f = (d: number) => ({
-  initial: { opacity: 0, y: 16 },
-  animate: { opacity: 1, y: 0 },
-  transition: { duration: 0.6, delay: d, ease: [0.22, 1, 0.36, 1] },
-})
+const ease = [0.16, 1, 0.3, 1]
+const f = (d: number) => ({ initial: { opacity: 0, y: 16 }, animate: { opacity: 1, y: 0 }, transition: { duration: 0.5, delay: d, ease } })
 
 const contacts = [
   { name: 'Guido Williams', role: 'Managing Partner', email: 'guido@apjkapital.com', linkedin: 'https://www.linkedin.com/in/guido-williams-a471a11/' },
@@ -15,22 +12,25 @@ const contacts = [
 
 export default function ContactContent() {
   return (
-    <div className="grid lg:grid-cols-2 gap-20 lg:gap-28">
+    <div className="grid md:grid-cols-2 gap-16 lg:gap-24">
       <motion.div {...f(0.05)}>
-        <p className="text-[17px] text-zinc-400 leading-[1.85] mb-16 max-w-[480px]">
-          Whether you're exploring investment opportunities, seeking advisory
-          services, or simply curious — reach out directly.
+        <p className="text-[17px] text-zinc-400 leading-[1.85] mb-14 max-w-[460px]">
+          Whether you're exploring investment opportunities, seeking advisory services, or simply curious — reach out directly.
         </p>
-        <div className="space-y-10">
+        <div className="space-y-8">
           <div className="flex items-start gap-5">
-            <Mail size={20} className="text-gold/30 mt-1 shrink-0" />
+            <div className="w-10 h-10 rounded-xl bg-gold/[0.05] flex items-center justify-center shrink-0 mt-0.5">
+              <Mail size={18} className="text-gold/40" />
+            </div>
             <div>
               <p className="label mb-2">General</p>
-              <a href="mailto:info@apjkapital.com" className="text-[18px] text-zinc-300 hover:text-gold transition-colors">info@apjkapital.com</a>
+              <a href="mailto:info@apjkapital.com" className="text-[18px] text-zinc-300 hover:text-gold transition-colors duration-200">info@apjkapital.com</a>
             </div>
           </div>
           <div className="flex items-start gap-5">
-            <MapPin size={20} className="text-gold/30 mt-1 shrink-0" />
+            <div className="w-10 h-10 rounded-xl bg-gold/[0.05] flex items-center justify-center shrink-0 mt-0.5">
+              <MapPin size={18} className="text-gold/40" />
+            </div>
             <div>
               <p className="label mb-2">Locations</p>
               <p className="text-[18px] text-zinc-300">Milan, Italy &middot; London, UK</p>
@@ -39,23 +39,22 @@ export default function ContactContent() {
         </div>
       </motion.div>
 
-      <motion.div {...f(0.15)} className="space-y-0 divide-y divide-dark-border">
-        {contacts.map((c) => (
-          <div key={c.name} className="flex items-center justify-between py-8 first:pt-0 last:pb-0">
-            <div>
-              <h4 className="text-[18px] font-display font-semibold text-white/85">{c.name}</h4>
-              <p className="label mt-1.5">{c.role}</p>
+      <motion.div {...f(0.12)}>
+        <p className="label mb-6">Key Contacts</p>
+        <div className="space-y-0 divide-y divide-dark-border/60">
+          {contacts.map((c) => (
+            <div key={c.name} className="flex items-center justify-between py-7 first:pt-0 last:pb-0 group">
+              <div>
+                <h4 className="text-[18px] font-display font-semibold text-white/85 group-hover:text-gold transition-colors duration-200">{c.name}</h4>
+                <p className="label mt-1.5">{c.role}</p>
+              </div>
+              <div className="flex items-center gap-3">
+                <a href={`mailto:${c.email}`} className="text-zinc-600 hover:text-gold hover:bg-gold/[0.05] transition-all duration-200 p-2.5 rounded-xl" aria-label={`Email ${c.name}`}><Mail size={18} /></a>
+                <a href={c.linkedin} target="_blank" rel="noopener noreferrer" className="text-zinc-600 hover:text-gold hover:bg-gold/[0.05] transition-all duration-200 p-2.5 rounded-xl" aria-label={`${c.name} LinkedIn`}><Link2 size={18} /></a>
+              </div>
             </div>
-            <div className="flex items-center gap-5">
-              <a href={`mailto:${c.email}`} className="text-zinc-600 hover:text-gold transition-colors p-2.5 rounded-xl hover:bg-gold/[0.04]" aria-label={`Email ${c.name}`}>
-                <Mail size={18} />
-              </a>
-              <a href={c.linkedin} target="_blank" rel="noopener noreferrer" className="text-zinc-600 hover:text-gold transition-colors p-2.5 rounded-xl hover:bg-gold/[0.04]" aria-label={`${c.name} LinkedIn`}>
-                <Link2 size={18} />
-              </a>
-            </div>
-          </div>
-        ))}
+          ))}
+        </div>
       </motion.div>
     </div>
   )

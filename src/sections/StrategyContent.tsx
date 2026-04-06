@@ -1,10 +1,7 @@
 import { motion } from 'framer-motion'
 
-const f = (d: number) => ({
-  initial: { opacity: 0, y: 16 },
-  animate: { opacity: 1, y: 0 },
-  transition: { duration: 0.6, delay: d, ease: [0.22, 1, 0.36, 1] },
-})
+const ease = [0.16, 1, 0.3, 1]
+const f = (d: number) => ({ initial: { opacity: 0, y: 16 }, animate: { opacity: 1, y: 0 }, transition: { duration: 0.5, delay: d, ease } })
 
 const strategies = [
   { id: '01', name: 'Derivatives & Structured Products', tag: 'Multi-Asset', text: 'Bespoke derivative solutions across equities, rates, FX, and commodities. Payoff structures matched to each client\u2019s risk appetite.', points: ['Structured notes', 'FX & rate hedging', 'Commodity overlays', 'Payoff engineering'] },
@@ -15,21 +12,21 @@ const strategies = [
 
 export default function StrategyContent() {
   return (
-    <div className="grid md:grid-cols-2 gap-8">
+    <div className="grid md:grid-cols-2 gap-6 md:gap-8">
       {strategies.map((s, i) => (
-        <motion.div key={s.id} {...f(0.05 + i * 0.07)} className="card flex flex-col">
+        <motion.div key={s.id} {...f(0.05 + i * 0.06)} className="card group flex flex-col cursor-default">
           <div className="flex items-baseline gap-4 mb-6">
-            <span className="text-[12px] text-gold/25 font-mono font-medium">{s.id}</span>
+            <span className="text-[12px] text-gold/20 font-mono font-medium">{s.id}</span>
             <div>
-              <h3 className="text-[20px] font-display font-semibold text-white/85 mb-1.5">{s.name}</h3>
-              <span className="text-[12px] text-zinc-600 tracking-[0.15em] uppercase">{s.tag}</span>
+              <h3 className="text-[20px] font-display font-semibold text-white/85 group-hover:text-gold transition-colors duration-300 mb-1.5">{s.name}</h3>
+              <span className="text-[12px] text-zinc-500 tracking-[0.15em] uppercase">{s.tag}</span>
             </div>
           </div>
-          <p className="text-[16px] text-zinc-500 leading-[1.8] mb-8 flex-1">{s.text}</p>
-          <div className="grid grid-cols-2 gap-3 pt-7 border-t border-dark-border">
+          <p className="text-[16px] text-zinc-400 leading-[1.8] mb-8 flex-1">{s.text}</p>
+          <div className="grid grid-cols-2 gap-3 pt-7 border-t border-dark-border/60">
             {s.points.map((p) => (
-              <span key={p} className="text-[14px] text-zinc-600 flex items-center gap-3">
-                <span className="w-1.5 h-1.5 rounded-full bg-gold/25" /> {p}
+              <span key={p} className="text-[14px] text-zinc-500 flex items-center gap-3">
+                <span className="w-1.5 h-1.5 rounded-full bg-gold/25 shadow-[0_0_4px_rgba(201,168,76,0.2)]" /> {p}
               </span>
             ))}
           </div>
